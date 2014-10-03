@@ -45,15 +45,15 @@
 		B4F7F79A19DEE81800302B5C /* readme.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		B4F7F79C19DEE81800302B5C /* _init.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _init.h; sourceTree = "<group>"; };
 		B4F7F79D19DEE81800302B5C /* _internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _internal.h; sourceTree = "<group>"; };
-		B4F7F79E19DEE81800302B5C /* _window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _window.h; sourceTree = "<group>"; };
+		B4F7F79E19DEE81800302B5C /* _window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = _window.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B4F7F79F19DEE81800302B5C /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		B4F7F7A119DEE81800302B5C /* init.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = init.cpp; sourceTree = "<group>"; };
 		B4F7F7A219DEE81800302B5C /* init.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = init.h; sourceTree = "<group>"; };
 		B4F7F7A319DEE81800302B5C /* mac_init.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = mac_init.mm; sourceTree = "<group>"; };
 		B4F7F7A419DEE81800302B5C /* mac_window.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = mac_window.mm; sourceTree = "<group>"; };
 		B4F7F7A519DEE81800302B5C /* window.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = window.cpp; sourceTree = "<group>"; };
-		B4F7F7A619DEE81800302B5C /* window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = window.h; sourceTree = "<group>"; };
-		B4F7F7A919DEE81800302B5C /* rect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rect.h; sourceTree = "<group>"; };
+		B4F7F7A619DEE81800302B5C /* window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = window.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B4F7F7A919DEE81800302B5C /* rect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = rect.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B4F7F7AB19DEE81800302B5C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		B4F7F7B819DEE87B00302B5C /* libapplicationLayer_MACx64.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libapplicationLayer_MACx64.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4F7F7C019DEE90800302B5C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -418,6 +418,7 @@
 				B4F7F7BB19DEE87B00302B5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B4F7F7CD19DEE99800302B5C /* Build configuration list for PBXNativeTarget "Test" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +427,7 @@
 				B4F7F7CF19DEE99800302B5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

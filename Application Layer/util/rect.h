@@ -1,13 +1,13 @@
 //
 //  rect.h
-//  Portable Game Test
+//  Codex
 //
 //  Created by Jens Kwasniok on 22.09.14.
 //  Copyright (c) 2014 Jens Kwasniok. All rights reserved.
 //
 
-#ifndef Portable_Game_Test_rect_h
-#define Portable_Game_Test_rect_h
+#ifndef Codex_rect_h
+#define Codex_rect_h
 
 namespace util {
 

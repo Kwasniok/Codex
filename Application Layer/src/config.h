@@ -1,13 +1,13 @@
 //
-//  _config.h
-//  Portable Game Test
+//  config.h
+//  Codex
 //
 //  Created by Jens Kwasniok on 21.09.14.
 //  Copyright (c) 2014 Jens Kwasniok. All rights reserved.
 //
 
-#ifndef Portable_Game_Test__config_h
-#define Portable_Game_Test__config_h
+#ifndef Codex_config_h
+#define Codex_config_h
 
 
 // -----------

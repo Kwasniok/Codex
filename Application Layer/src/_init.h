@@ -1,13 +1,13 @@
 //
 //  _init.h
-//  Portable Game Test
+//  Codex
 //
 //  Created by Jens Kwasniok on 24.09.14.
 //  Copyright (c) 2014 Jens Kwasniok. All rights reserved.
 //
 
-#ifndef Portable_Game_Test__init_h
-#define Portable_Game_Test__init_h
+#ifndef Codex__init_h
+#define Codex__init_h
 
 #include "init.h"
 #include "_window.h"

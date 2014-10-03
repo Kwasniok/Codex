@@ -1,13 +1,13 @@
 //
-//  internal.h
-//  Portable Game Test
+//  _internal.h
+//  Codex
 //
 //  Created by Jens Kwasniok on 21.09.14.
 //  Copyright (c) 2014 Jens Kwasniok. All rights reserved.
 //
 
-#ifndef Portable_Game_Test_internal_h
-#define Portable_Game_Test_internal_h
+#ifndef Codex_internal_h
+#define Codex_internal_h
 
 #include "config.h"
 
