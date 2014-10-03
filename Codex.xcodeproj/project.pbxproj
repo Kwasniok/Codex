@@ -6,87 +6,14 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		A46AA06F19DEE68D00200EBC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A46AA06E19DEE68D00200EBC /* main.cpp */; };
-		A46AA07119DEE68D00200EBC /* Codex.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = A46AA07019DEE68D00200EBC /* Codex.1 */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		A46AA06919DEE68D00200EBC /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-				A46AA07119DEE68D00200EBC /* Codex.1 in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
-/* Begin PBXFileReference section */
-		A46AA06B19DEE68D00200EBC /* Codex */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Codex; sourceTree = BUILT_PRODUCTS_DIR; };
-		A46AA06E19DEE68D00200EBC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		A46AA07019DEE68D00200EBC /* Codex.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Codex.1; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		A46AA06819DEE68D00200EBC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
 /* Begin PBXGroup section */
 		A46AA06219DEE68D00200EBC = {
 			isa = PBXGroup;
 			children = (
-				A46AA06D19DEE68D00200EBC /* Codex */,
-				A46AA06C19DEE68D00200EBC /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		A46AA06C19DEE68D00200EBC /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A46AA06B19DEE68D00200EBC /* Codex */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		A46AA06D19DEE68D00200EBC /* Codex */ = {
-			isa = PBXGroup;
-			children = (
-				A46AA06E19DEE68D00200EBC /* main.cpp */,
-				A46AA07019DEE68D00200EBC /* Codex.1 */,
-			);
-			path = Codex;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		A46AA06A19DEE68D00200EBC /* Codex */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A46AA07419DEE68D00200EBC /* Build configuration list for PBXNativeTarget "Codex" */;
-			buildPhases = (
-				A46AA06719DEE68D00200EBC /* Sources */,
-				A46AA06819DEE68D00200EBC /* Frameworks */,
-				A46AA06919DEE68D00200EBC /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Codex;
-			productName = Codex;
-			productReference = A46AA06B19DEE68D00200EBC /* Codex */;
-			productType = "com.apple.product-type.tool";
-		};
-/* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		A46AA06319DEE68D00200EBC /* Project object */ = {
@@ -103,25 +30,13 @@
 				en,
 			);
 			mainGroup = A46AA06219DEE68D00200EBC;
-			productRefGroup = A46AA06C19DEE68D00200EBC /* Products */;
+			productRefGroup = A46AA06219DEE68D00200EBC;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A46AA06A19DEE68D00200EBC /* Codex */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXSourcesBuildPhase section */
-		A46AA06719DEE68D00200EBC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A46AA06F19DEE68D00200EBC /* main.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
 		A46AA07219DEE68D00200EBC /* Debug */ = {
@@ -194,20 +109,6 @@
 			};
 			name = Release;
 		};
-		A46AA07519DEE68D00200EBC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		A46AA07619DEE68D00200EBC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -219,14 +120,6 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
-		};
-		A46AA07419DEE68D00200EBC /* Build configuration list for PBXNativeTarget "Codex" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A46AA07519DEE68D00200EBC /* Debug */,
-				A46AA07619DEE68D00200EBC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

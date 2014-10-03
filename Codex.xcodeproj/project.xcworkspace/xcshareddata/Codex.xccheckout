@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DE969EAF-3FED-4798-A434-EEF711CF416E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Codex</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>64FBA5E4-803B-4DA9-93B0-1BA7F64A55FC</key>
+		<string>https://github.com/Jasper42/Codex.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Codex.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>64FBA5E4-803B-4DA9-93B0-1BA7F64A55FC</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Jasper42/Codex.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>64FBA5E4-803B-4DA9-93B0-1BA7F64A55FC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>64FBA5E4-803B-4DA9-93B0-1BA7F64A55FC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Codex</string>
+		</dict>
+	</array>
+</dict>
+</plist>
