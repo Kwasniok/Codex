@@ -10,29 +10,29 @@
 	<string>Codex</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>64FBA5E4-803B-4DA9-93B0-1BA7F64A55FC</key>
+		<key>1C11C8E059155975178FAA802E947442B4E1E003</key>
 		<string>https://github.com/Jasper42/Codex.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Codex.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>64FBA5E4-803B-4DA9-93B0-1BA7F64A55FC</key>
+		<key>1C11C8E059155975178FAA802E947442B4E1E003</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/Jasper42/Codex.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>64FBA5E4-803B-4DA9-93B0-1BA7F64A55FC</string>
+	<string>1C11C8E059155975178FAA802E947442B4E1E003</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>64FBA5E4-803B-4DA9-93B0-1BA7F64A55FC</string>
+			<string>1C11C8E059155975178FAA802E947442B4E1E003</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Codex</string>
 		</dict>
