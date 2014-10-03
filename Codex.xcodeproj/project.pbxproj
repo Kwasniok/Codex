@@ -40,8 +40,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B4F7F79119DEE81800302B5C /* template.h.begin */ = {isa = PBXFileReference; lastKnownFileType = text; path = template.h.begin; sourceTree = "<group>"; };
-		B4F7F79219DEE81800302B5C /* template.h.end */ = {isa = PBXFileReference; lastKnownFileType = text; path = template.h.end; sourceTree = "<group>"; };
 		B4F7F79719DEE81800302B5C /* applicationLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = applicationLayer.h; sourceTree = "<group>"; };
 		B4F7F79919DEE81800302B5C /* info.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = info.txt; sourceTree = "<group>"; };
 		B4F7F79A19DEE81800302B5C /* readme.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
@@ -100,18 +98,8 @@
 				B4F7F79319DEE81800302B5C /* include */,
 				B4F7F79B19DEE81800302B5C /* src */,
 				B4F7F7A819DEE81800302B5C /* util */,
-				B4F7F79019DEE81800302B5C /* create */,
 			);
 			path = "Application Layer";
-			sourceTree = "<group>";
-		};
-		B4F7F79019DEE81800302B5C /* create */ = {
-			isa = PBXGroup;
-			children = (
-				B4F7F79119DEE81800302B5C /* template.h.begin */,
-				B4F7F79219DEE81800302B5C /* template.h.end */,
-			);
-			path = create;
 			sourceTree = "<group>";
 		};
 		B4F7F79319DEE81800302B5C /* include */ = {
