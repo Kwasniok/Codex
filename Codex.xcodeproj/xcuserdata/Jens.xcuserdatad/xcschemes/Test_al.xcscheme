@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B4F7F7C819DEE99800302B5C"
-               BuildableName = "Test"
-               BlueprintName = "Test"
+               BlueprintIdentifier = "B45ADB391A2F5B2400390C6E"
+               BuildableName = "Test_val copy"
+               BlueprintName = "Test_al"
                ReferencedContainer = "container:Codex.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B4F7F7C819DEE99800302B5C"
-            BuildableName = "Test"
-            BlueprintName = "Test"
+            BlueprintIdentifier = "B45ADB391A2F5B2400390C6E"
+            BuildableName = "Test_val copy"
+            BlueprintName = "Test_al"
             ReferencedContainer = "container:Codex.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -51,9 +51,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B4F7F7C819DEE99800302B5C"
-            BuildableName = "Test"
-            BlueprintName = "Test"
+            BlueprintIdentifier = "B45ADB391A2F5B2400390C6E"
+            BuildableName = "Test_val copy"
+            BlueprintName = "Test_al"
             ReferencedContainer = "container:Codex.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -69,9 +69,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B4F7F7C819DEE99800302B5C"
-            BuildableName = "Test"
-            BlueprintName = "Test"
+            BlueprintIdentifier = "B45ADB391A2F5B2400390C6E"
+            BuildableName = "Test_val copy"
+            BlueprintName = "Test_al"
             ReferencedContainer = "container:Codex.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

@@ -14,6 +14,8 @@
 #include <vector>
 #include <string>
 
+#include "opengl_context.h"
+
 
 namespace application_layer {
 
@@ -55,15 +57,21 @@ namespace application_layer {
 		//! @return ture iff window is created and visible
 		//! @see set_visible(bool vis)
 		bool is_visible() const;
+		/*
+		//!
+		void attatch_openGL_context(OpenGL_Context* c);
+		//!
+		OpenGL_Context* fet_openGL_context();
+		 */
 
 		static constexpr unsigned int min_bound_size = 20;
 
 	private:
 		//TODO: optimize performance, when implemented all platforms: Some 'middle' functions just call their 'platform' equivalent without adding some functionality. This could be improved by implement the 'middle' function directly inside the platform file and removing the 'platform' declaration. Alternative: use inline functions.
-		void _platform_create_window(const util::Rect& bounds, std::string title,
-									 bool closable, bool resizable, bool borderless);
-		void _platform_destroy_window();
-		void _platform_window_set_visible(bool vis);
+		void _platform_create(const util::Rect& bounds, std::string title, bool closable,
+							   bool resizable, bool borderless);
+		void _platform_destroy();
+		void _platform_set_visible(bool vis);
 		bool _platform_is_visible() const;
 	};
 

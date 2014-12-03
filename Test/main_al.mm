@@ -1,27 +1,36 @@
 //
-//  main.cpp
+//  main2.cpp
 //  Codex
 //
-//  Created by Jens Kwasniok on 21.09.14.
+//  Created by Jens Kwasniok on 03.12.14.
 //  Copyright (c) 2014 Jens Kwasniok. All rights reserved.
 //
 
 #include <iostream>
+
+#include "measure.h"
+
 #include "applicationLayer.h"
 
-inline void pause()
-{
-	std::cout << "PAUSE";
-	getchar();
-}
 
 using namespace application_layer;
 
-int main(int argc, const char * argv[]) {
+void do_f();
+
+int main(int argc, const char * argv[])
+{
+	std::cout << measure_time<std::chrono::milliseconds>(do_f) << "ms." << std::endl;
+	return 0;
+}
+
+void do_f()
+{
 
 	initialize();
+
 	Window win;
 	win.create(util::Rect(200, 200, 200, 200), "Placeholder Title", true, true, false);
+
 	win.set_visible(true);
 
 	for (int i=0; win.is_created(); ++i) {
@@ -31,6 +40,4 @@ int main(int argc, const char * argv[]) {
 	win.destroy();
 
 	destroy();
-	
-    return 0;
 }

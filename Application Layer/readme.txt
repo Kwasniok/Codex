@@ -76,3 +76,9 @@ Annotations:
 		References to other functions (or classes) can be written via a '@see' tag. This is
 		recommended for functions (or classes) depending on ther functions (or classes) or
 		complement an other function (e.g. a setter references the getter).
+
+
+Other conventions:
+
+	The code layout follows (almost) the K&R-style with some variations from Bjarne Stroustrup -
+	including the special intendation of curly brackets.

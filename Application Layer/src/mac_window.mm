@@ -84,6 +84,18 @@ _AL_UNAVAILABLE("this method leaks setting the handler");
 	return self;
 }
 
+-(void)sendEvent:(NSEvent *)theEvent
+{
+	//NSLog(@"Win Got Event: %@", theEvent);
+	[super sendEvent:theEvent];
+}
+
+-(void)setContentSize:(NSSize)aSize
+{
+	NSLog(@"Win Resize x=%lf y=%lf", aSize.width, aSize.height);
+	[super setContentSize:aSize];
+}
+
 #if _AL_DEBUG_OBJC_MEM_MANGEMENT
 -(void)dealloc
 {
@@ -160,7 +172,7 @@ void application_layer::_platform_destroy_windows()
 //   Member Functions
 // -----------
 
-void Window::_platform_create_window(const util::Rect& bounds, std::string title, bool closable, bool resizable, bool borderless)
+void Window::_platform_create(const util::Rect& bounds, std::string title, bool closable, bool resizable, bool borderless)
 {
 	// parameters
 	NSRect frame = NSMakeRect(bounds.x, bounds.y, bounds.width, bounds.height);
@@ -195,13 +207,13 @@ void Window::_platform_create_window(const util::Rect& bounds, std::string title
 	_platform_window = (__bridge void*) win;
 }
 
-void Window::_platform_destroy_window()
+void Window::_platform_destroy()
 {
 	// restore pointer to platform-specific window
 	//_ALWindow* win = (__bridge _ALWindow*) _platform_window;
 }
 
-void Window::_platform_window_set_visible(bool vis)
+void Window::_platform_set_visible(bool vis)
 {
 	// restore pointer to platform-specific window
 	_ALWindow* win = (__bridge _ALWindow*) _platform_window;

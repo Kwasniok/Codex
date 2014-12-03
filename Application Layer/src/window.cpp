@@ -99,7 +99,7 @@ bool Window::create(const util::Rect& bounds, std::string title, bool closable,
 	if (_bounds.height < min_bound_size)
 		_bounds.height = min_bound_size;
 
-	_platform_create_window(_bounds, title, closable, resizable, borderless);
+	_platform_create(_bounds, title, closable, resizable, borderless);
 
 	if (_platform_window == nullptr) {
 		return false;
@@ -114,7 +114,7 @@ void Window::destroy()
 {
 	if (!is_created()) return;
 
-	_platform_destroy_window();
+	_platform_destroy();
 	_platform_window = nullptr;
 
 	_remove_window_reference_from_list(this);
@@ -124,7 +124,7 @@ void Window::set_visible(bool vis)
 {
 	if (!is_created()) return;
 
-	_platform_window_set_visible(vis);
+	_platform_set_visible(vis);
 }
 
 bool Window::is_visible() const
