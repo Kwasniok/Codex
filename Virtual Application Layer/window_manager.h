@@ -6,21 +6,23 @@
 //  Copyright (c) 2014 Codex Soft. All rights reserved.
 //
 
-#ifndef Codex_window_manager_h
-#define Codex_window_manager_h
+#ifndef __Codex__window_manager__
+#define __Codex__window_manager__
 
-#include <iostream>
+#include "config.h"
 #include <vector>
 #include <string>
 #include <algorithm>
 #include "rect.h"
 #include "window.h"
+#include "log.h"
 
 namespace val {
 
 	class Application;
 	class Window;
 
+	//! general window manager interface
 	class Window_Manager {
 	protected:
 		static Window_Manager* win_manager;
@@ -44,6 +46,7 @@ namespace val {
 	protected:
 		void add_window_to_list(Window* win);
 		void remove_window_from_list(Window* win);
+		bool has_window(Window* win);
 	};
 
 }

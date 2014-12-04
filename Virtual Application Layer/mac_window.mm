@@ -19,7 +19,9 @@ Window_Mac::~Window_Mac()
 
 void Window_Mac::close()
 {
-	[mac_win close];
+	if (mac_win){
+		[mac_win close];
+	}
 
 	mac_win = NULL; //TODO: CHECK FOR LEAKS
 }

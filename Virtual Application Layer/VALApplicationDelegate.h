@@ -9,7 +9,8 @@
 #ifndef __Codex__VALApplicationDelegate__
 #define __Codex__VALApplicationDelegate__
 
-#include "internal.h"
+#include "config.h"
+#include "log.h"
 #include <AppKit/AppKit.h>
 
 @interface VALApplicationDelegate : NSObject <NSApplicationDelegate>

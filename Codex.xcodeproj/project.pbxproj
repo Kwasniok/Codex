@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B42D23301A30C5D70012BB06 /* log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B42D232E1A30C5D70012BB06 /* log.cpp */; };
+		B42D23311A30C5D70012BB06 /* log.h in Headers */ = {isa = PBXBuildFile; fileRef = B42D232F1A30C5D70012BB06 /* log.h */; };
 		B458B63E1A18EFEF00143CF0 /* opengl_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B458B63C1A18EFEF00143CF0 /* opengl_context.cpp */; };
 		B458B6451A18F23500143CF0 /* mac_opengl_context.mm in Sources */ = {isa = PBXBuildFile; fileRef = B458B6431A18F23500143CF0 /* mac_opengl_context.mm */; };
 		B458B64A1A18F46900143CF0 /* _opengl_context.h in Headers */ = {isa = PBXBuildFile; fileRef = B458B6491A18F46900143CF0 /* _opengl_context.h */; };
@@ -74,6 +76,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B42D232E1A30C5D70012BB06 /* log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = log.cpp; sourceTree = "<group>"; };
+		B42D232F1A30C5D70012BB06 /* log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = log.h; sourceTree = "<group>"; };
 		B458B63C1A18EFEF00143CF0 /* opengl_context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = opengl_context.cpp; sourceTree = "<group>"; };
 		B458B63D1A18EFEF00143CF0 /* opengl_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opengl_context.h; sourceTree = "<group>"; };
 		B458B6431A18F23500143CF0 /* mac_opengl_context.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = mac_opengl_context.mm; sourceTree = "<group>"; };
@@ -82,15 +86,15 @@
 		B45ADB371A2F5A2900390C6E /* main_al.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main_al.mm; sourceTree = "<group>"; };
 		B45ADB461A2F5B2400390C6E /* Test_al */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Test_al; sourceTree = BUILT_PRODUCTS_DIR; };
 		B461292B1A2E6277007F66A3 /* window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = window.cpp; sourceTree = "<group>"; };
-		B46129301A2E6414007F66A3 /* VALWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VALWindow.h; sourceTree = "<group>"; };
-		B46129311A2E6414007F66A3 /* VALWindow.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VALWindow.mm; sourceTree = "<group>"; };
+		B46129301A2E6414007F66A3 /* VALWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = VALWindow.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B46129311A2E6414007F66A3 /* VALWindow.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = VALWindow.mm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B46129341A2E64D6007F66A3 /* VALWindowDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VALWindowDelegate.h; sourceTree = "<group>"; };
-		B46129351A2E64D6007F66A3 /* VALWindowDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VALWindowDelegate.mm; sourceTree = "<group>"; };
+		B46129351A2E64D6007F66A3 /* VALWindowDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = VALWindowDelegate.mm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B46129381A2E65EE007F66A3 /* VALApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VALApplication.h; sourceTree = "<group>"; };
-		B46129391A2E65EE007F66A3 /* VALApplication.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VALApplication.mm; sourceTree = "<group>"; };
+		B46129391A2E65EE007F66A3 /* VALApplication.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = VALApplication.mm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B461293C1A2E6655007F66A3 /* VALApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VALApplicationDelegate.h; sourceTree = "<group>"; };
-		B461293D1A2E6655007F66A3 /* VALApplicationDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VALApplicationDelegate.mm; sourceTree = "<group>"; };
-		B46129411A2E6A1A007F66A3 /* internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = internal.h; sourceTree = "<group>"; };
+		B461293D1A2E6655007F66A3 /* VALApplicationDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = VALApplicationDelegate.mm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B46129411A2E6A1A007F66A3 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = config.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B47910181A2E290700B8A1F5 /* libvirtualApplicationLayer_MACx64.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvirtualApplicationLayer_MACx64.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B47910201A2E29B900B8A1F5 /* virtualApplicationLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = virtualApplicationLayer.h; sourceTree = "<group>"; };
 		B47910221A2E29D000B8A1F5 /* window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = window.h; sourceTree = "<group>"; };
@@ -173,6 +177,28 @@
 			);
 			sourceTree = "<group>";
 		};
+		B42D232C1A30BE260012BB06 /* window manager */ = {
+			isa = PBXGroup;
+			children = (
+				B479102B1A2E2F1D00B8A1F5 /* window_manager.h */,
+				B47910301A2E304200B8A1F5 /* window_manager.cpp */,
+				B46129341A2E64D6007F66A3 /* VALWindowDelegate.h */,
+				B46129351A2E64D6007F66A3 /* VALWindowDelegate.mm */,
+				B479102D1A2E2FC100B8A1F5 /* mac_window_manager.h */,
+				B479102C1A2E2FC100B8A1F5 /* mac_window_manager.mm */,
+			);
+			name = "window manager";
+			sourceTree = "<group>";
+		};
+		B42D232D1A30C5C00012BB06 /* log */ = {
+			isa = PBXGroup;
+			children = (
+				B42D232F1A30C5D70012BB06 /* log.h */,
+				B42D232E1A30C5D70012BB06 /* log.cpp */,
+			);
+			name = log;
+			sourceTree = "<group>";
+		};
 		B458B6461A18F24700143CF0 /* init */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,9 +252,11 @@
 		B479101F1A2E299900B8A1F5 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				B46129411A2E6A1A007F66A3 /* internal.h */,
-				B47910331A2E493400B8A1F5 /* init */,
+				B46129411A2E6A1A007F66A3 /* config.h */,
+				B47910331A2E493400B8A1F5 /* application */,
 				B47910321A2E492F00B8A1F5 /* window */,
+				B42D232C1A30BE260012BB06 /* window manager */,
+				B42D232D1A30C5C00012BB06 /* log */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -236,12 +264,6 @@
 		B47910321A2E492F00B8A1F5 /* window */ = {
 			isa = PBXGroup;
 			children = (
-				B479102B1A2E2F1D00B8A1F5 /* window_manager.h */,
-				B47910301A2E304200B8A1F5 /* window_manager.cpp */,
-				B46129341A2E64D6007F66A3 /* VALWindowDelegate.h */,
-				B46129351A2E64D6007F66A3 /* VALWindowDelegate.mm */,
-				B479102D1A2E2FC100B8A1F5 /* mac_window_manager.h */,
-				B479102C1A2E2FC100B8A1F5 /* mac_window_manager.mm */,
 				B47910221A2E29D000B8A1F5 /* window.h */,
 				B461292B1A2E6277007F66A3 /* window.cpp */,
 				B46129301A2E6414007F66A3 /* VALWindow.h */,
@@ -252,7 +274,7 @@
 			name = window;
 			sourceTree = "<group>";
 		};
-		B47910331A2E493400B8A1F5 /* init */ = {
+		B47910331A2E493400B8A1F5 /* application */ = {
 			isa = PBXGroup;
 			children = (
 				B47910351A2E494C00B8A1F5 /* application.h */,
@@ -264,7 +286,7 @@
 				B47910391A2E4A0800B8A1F5 /* mac_application.h */,
 				B47910381A2E4A0800B8A1F5 /* mac_application.mm */,
 			);
-			name = init;
+			name = application;
 			sourceTree = "<group>";
 		};
 		B4F7F78F19DEE81800302B5C /* Application Layer */ = {
@@ -343,6 +365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B46129401A2E6727007F66A3 /* virtualApplicationLayer.h in Headers */,
+				B42D23311A30C5D70012BB06 /* log.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +506,7 @@
 			files = (
 				B47910361A2E494C00B8A1F5 /* application.cpp in Sources */,
 				B461293B1A2E65EE007F66A3 /* VALApplication.mm in Sources */,
+				B42D23301A30C5D70012BB06 /* log.cpp in Sources */,
 				B46129371A2E64D6007F66A3 /* VALWindowDelegate.mm in Sources */,
 				B479103A1A2E4A0800B8A1F5 /* mac_application.mm in Sources */,
 				B47910311A2E304200B8A1F5 /* window_manager.cpp in Sources */,

@@ -10,21 +10,21 @@
 
 @implementation VALApplicationDelegate
 
-#if VAL_DEBUG_OBJC_MEM_MANGEMENT
+#if VAL_DEBUG_MAC_MEM_MANGEMENT
 -(id)init
 {
 	if (self = [super init])
 	{
-		NSLog(@"VALApplicationDelegate init [%@]" , self);
+		val::Log::log(val::Log_Type::MEM, "VALApplicationDelegate <%p> init", self);
 	}
 	return self;
 }
 
 -(void)dealloc
 {
-	NSLog(@"VALApplicationDelegate dealloc [%@]" , self);
+	val::Log::log(val::Log_Type::MEM, "VALApplicationDelegate <%p> dealloc", self);
 	[super dealloc];
 }
-#endif
+#endif // VAL_DEBUG_MAC_MEM_MANGEMENT
 
 @end

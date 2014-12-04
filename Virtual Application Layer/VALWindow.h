@@ -9,16 +9,10 @@
 #ifndef __Codex__VALWindow__
 #define __Codex__VALWindow__
 
-#include "internal.h"
+#include "config.h"
+#include "window.h"
+#include "window_manager.h"
 #import <AppKit/AppKit.h>
-
-namespace val {
-
-	class Window;
-
-}
-
-#define _AL_UNAVAILABLE(reason) __attribute__((unavailable(reason)))
 
 @interface VALWindow : NSWindow
 //! pointer to the window handler
@@ -32,20 +26,20 @@ namespace val {
 				 handler:(val::Window*)handler;
 
 // supressed super init functions (they would allow initialization without setting windowHandler)
--(id)init _AL_UNAVAILABLE("this method leaks setting the handler");
+-(id)init MAC_UNAVAILABLE("this method leaks setting the handler");
 -(id)initWithCoder:(NSCoder *)aDecoder
-_AL_UNAVAILABLE("this method leaks setting the handler");
+MAC_UNAVAILABLE("this method leaks setting the handler");
 -(id)initWithContentRect:(NSRect)contentRect
 			   styleMask:(NSUInteger)aStyle
 				 backing:(NSBackingStoreType)bufferingType
 				   defer:(BOOL)flag
-_AL_UNAVAILABLE("this method leaks setting the handler");
+MAC_UNAVAILABLE("this method leaks setting the handler");
 -(id)initWithContentRect:(NSRect)contentRect
 			   styleMask:(NSUInteger)aStyle
 				 backing:(NSBackingStoreType)bufferingType
 				   defer:(BOOL)flag
 				  screen:(NSScreen *)screen
-_AL_UNAVAILABLE("this method leaks setting the handler");
+MAC_UNAVAILABLE("this method leaks setting the handler");
 
 // setter & getter
 -(val::Window*)windowHandler;

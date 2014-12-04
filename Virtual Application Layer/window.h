@@ -9,8 +9,11 @@
 #ifndef __Codex__window__
 #define __Codex__window__
 
+#include "config.h"
+
 namespace val {
 
+	//! general window interface
 	class Window {
 
 	public:

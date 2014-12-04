@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B45ADB391A2F5B2400390C6E"
-               BuildableName = "Test_val copy"
+               BuildableName = "Test_al"
                BlueprintName = "Test_al"
                ReferencedContainer = "container:Codex.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B45ADB391A2F5B2400390C6E"
-            BuildableName = "Test_val copy"
+            BuildableName = "Test_al"
             BlueprintName = "Test_al"
             ReferencedContainer = "container:Codex.xcodeproj">
          </BuildableReference>
@@ -52,7 +52,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B45ADB391A2F5B2400390C6E"
-            BuildableName = "Test_val copy"
+            BuildableName = "Test_al"
             BlueprintName = "Test_al"
             ReferencedContainer = "container:Codex.xcodeproj">
          </BuildableReference>
@@ -70,7 +70,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B45ADB391A2F5B2400390C6E"
-            BuildableName = "Test_val copy"
+            BuildableName = "Test_al"
             BlueprintName = "Test_al"
             ReferencedContainer = "container:Codex.xcodeproj">
          </BuildableReference>

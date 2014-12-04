@@ -9,7 +9,8 @@
 #ifndef __Codex__VALApplication__
 #define __Codex__VALApplication__
 
-#include "internal.h"
+#include "config.h"
+#include "log.h"
 #import <AppKit/AppKit.h>
 
 @interface VALApplication : NSApplication

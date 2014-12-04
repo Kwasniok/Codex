@@ -9,6 +9,7 @@
 #ifndef Codex_virtualApplicationLayer_h
 #define Codex_virtualApplicationLayer_h
 
+#include "log.h"
 #include "application.h"
 #include "window_manager.h"
 #include "window.h"

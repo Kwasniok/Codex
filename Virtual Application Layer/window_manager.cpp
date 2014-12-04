@@ -19,7 +19,6 @@ Window_Manager::~Window_Manager()
 
 bool Window_Manager::initialize()
 {
-
 	return true;
 }
 
@@ -34,10 +33,19 @@ void Window_Manager::destroy()
 
 void Window_Manager::add_window_to_list(val::Window *win)
 {
-	// TODO: CHECK FOR MULTIPLE ENTRIES
-	windows.push_back(win);
-
-	std::cout << "Added to window list:     " << win << std::endl;
+	if (!has_window(win))
+	{
+		windows.push_back(win);
+#if VAL_DEBUG_WINDOW_LIST
+		Log::log(Log_Type::MEM, "Added to window list:     <%p>", win);
+#endif
+	}
+	else
+	{
+#if VAL_DEBUG_WINDOW_LIST
+		Log::log(Log_Type::MEM, "Double entry denied:      <%p>", win);
+#endif
+	}
 }
 
 void Window_Manager::remove_window_from_list(val::Window *win)
@@ -46,6 +54,14 @@ void Window_Manager::remove_window_from_list(val::Window *win)
 	if (it != windows.end())
 	{
 		windows.erase(it);
-		std::cout << "Removed from window list: " << win << std::endl;
+#if VAL_DEBUG_WINDOW_LIST
+		Log::log(Log_Type::MEM, "Removed from window list: <%p>", win);
+#endif
 	}
+}
+
+bool Window_Manager::has_window(val::Window *win)
+{
+	auto it = find(windows.begin(), windows.end(), win);
+	return it != windows.end();
 }

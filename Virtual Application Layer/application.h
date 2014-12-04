@@ -9,10 +9,12 @@
 #ifndef __Codex__application__
 #define __Codex__application__
 
+#include "config.h"
 #include "window_manager.h"
 
 namespace val {
 
+	//! general application interface
 	class Application {
 	protected:
 		static Application* application;

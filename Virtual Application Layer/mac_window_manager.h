@@ -9,6 +9,7 @@
 #ifndef __Codex__mac_window_manager__
 #define __Codex__mac_window_manager__
 
+#include "config.h"
 #include "window_manager.h"
 #include "VALWindowDelegate.h"
 #include "mac_window.h"

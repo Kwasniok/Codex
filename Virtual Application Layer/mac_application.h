@@ -9,6 +9,7 @@
 #ifndef __Codex__mac_application__
 #define __Codex__mac_application__
 
+#include "config.h"
 #include "application.h"
 #include "VALApplication.h"
 #include "VALApplicationDelegate.h"

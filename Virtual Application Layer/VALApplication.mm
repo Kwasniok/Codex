@@ -8,31 +8,33 @@
 
 #import "VALApplication.h"
 
+using namespace val;
+
 @implementation VALApplication
 
-/*
- - (void)sendEvent:(NSEvent *)event
- {
-	NSLog(@"Got Event %@", event);
+#if VAL_DEBUG_MAC_PRINT_APPLICATION_EVENTS
+- (void)sendEvent:(NSEvent *)event
+{
+	Log::log(Log_Type::DBUG, "VALApplication <%p> event: %s", self, event.description.UTF8String);
 	[super sendEvent:event];
- }
- */
+}
+#endif // VAL_DEBUG_MAC_PRINT_APPLICATION_EVENTS
 
-#if VAL_DEBUG_OBJC_MEM_MANGEMENT
+#if VAL_DEBUG_MAC_MEM_MANGEMENT
 -(id)init
 {
 	if (self = [super init])
 	{
-		NSLog(@"VALApplication init [%@]" , self);
+		val::Log::log(val::Log_Type::MEM, "VALApplication <%p> init", self);
 	}
 	return self;
 }
 
 -(void)dealloc
 {
-	NSLog(@"VALApplication dealloc [%@]" , self);
+	val::Log::log(val::Log_Type::MEM, "VALApplication <%p> dealloc", self);
 	[super dealloc];
 }
-#endif
+#endif // VAL_DEBUG_MAC_MEM_MANGEMENT
 
 @end

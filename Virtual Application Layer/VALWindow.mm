@@ -8,6 +8,8 @@
 
 #import "VALWindow.h"
 
+using namespace val;
+
 @implementation VALWindow
 @synthesize windowHandler;
 
@@ -19,7 +21,7 @@
 {
 	// has valid parent window?
 	if (handler == nullptr) {
-		NSLog(@"Cannot initialize VALWindow without a vaild handler");
+		Log::log(Log_Type::WARNING, "Cannot initialize VALWindow without a vaild handler");
 		return NULL;
 	}
 
@@ -33,8 +35,8 @@
 		// store pointer to parent window
 		windowHandler = handler;
 		[self setReleasedWhenClosed:YES];
-#if VAL_DEBUG_OBJC_MEM_MANGEMENT
-		NSLog(@"VALWindow init [%@]" , self);
+#if VAL_DEBUG_MAC_MEM_MANGEMENT
+		Log::log(Log_Type::MEM, "VALWindow <%p> init", self);
 #endif
 	}
 	return self;
@@ -42,23 +44,24 @@
 
 -(void)sendEvent:(NSEvent *)theEvent
 {
-	//NSLog(@"Win Got Event: %@", theEvent);
+	Log::log(Log_Type::DBUG, "VALWindow <%p> event: %s", self, theEvent.description.UTF8String);
 	[super sendEvent:theEvent];
 }
 
 -(void)setContentSize:(NSSize)aSize
 {
-	NSLog(@"Win Resize x=%lf y=%lf", aSize.width, aSize.height);
+	Log::log(Log_Type::DBUG, "VALWindow <%p> resize: x=%lf, y=%lf", self, aSize.width, aSize.height);
 	[super setContentSize:aSize];
 }
 
-#if VAL_DEBUG_OBJC_MEM_MANGEMENT
+#if VAL_DEBUG_MAC_MEM_MANGEMENT
 -(void)dealloc
 {
 	// TODO: SEND MESSAGE TO WINDOW HANDLER
-	NSLog(@"VALWindow dealloc [%@]" , self);
+	windowHandler->close();
+	Log::log(Log_Type::MEM, "VALWindow <%p> dealloc", self);
 	[super dealloc];
 }
-#endif
+#endif // VAL_DEBUG_MAC_MEM_MANGEMENT
 
 @end

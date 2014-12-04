@@ -19,7 +19,7 @@ void do_f();
 
 int main(int argc, const char * argv[])
 {
-	std::cout << measure_time<std::chrono::milliseconds>(do_f) << "ms." << std::endl;
+	Log::log(Log_Type::DBUG, "TIME: %li ms.", measure_time<std::chrono::milliseconds>(do_f));
     return 0;
 }
 

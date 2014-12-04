@@ -8,6 +8,8 @@
 
 #import "VALWindowDelegate.h"
 
+using namespace val;
+
 @implementation VALWindowDelegate
 
 -(BOOL)windowShouldClose:(id)sender
@@ -18,21 +20,21 @@
 	return TRUE;
 }
 
-#if VAL_DEBUG_OBJC_MEM_MANGEMENT
+#if VAL_DEBUG_MAC_MEM_MANGEMENT
 -(id)init
 {
 	if (self = [super init])
 	{
-		NSLog(@"VALWindowDelegate init [%@]" , self);
+		Log::log(Log_Type::MEM, "VALWindowDelegate <%p> init", self);
 	}
 	return self;
 }
 
 -(void)dealloc
 {
-	NSLog(@"VALWindowDelegate dealloc [%@]" , self);
+	Log::log(Log_Type::MEM, "VALWindowDelegate <%p> dealloc", self);
 	[super dealloc];
 }
-#endif
+#endif // VAL_DEBUG_MAC_MEM_MANGEMENT
 
 @end

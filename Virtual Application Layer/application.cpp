@@ -29,7 +29,11 @@ bool Application::initialize()
 
 void Application::destroy()
 {
-	Window_Manager::get()->destroy();
+	Window_Manager* win_man = Window_Manager::get();
+
+	win_man->destroy();
+	delete win_man;
+
 	Window_Manager::set(nullptr);
 
 }
