@@ -9,7 +9,7 @@
 #ifndef __Codex__window_manager__
 #define __Codex__window_manager__
 
-#include "config.h"
+#include "val_config.h"
 #include <vector>
 #include <string>
 #include <algorithm>

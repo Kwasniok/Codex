@@ -9,7 +9,6 @@
 #ifndef __Codex__mac_window__
 #define __Codex__mac_window__
 
-#include "config.h"
 #include "window.h"
 #include "VALWindow.h"
 

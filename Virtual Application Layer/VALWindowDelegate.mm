@@ -25,14 +25,14 @@ using namespace val;
 {
 	if (self = [super init])
 	{
-		Log::log(Log_Type::MEM, "VALWindowDelegate <%p> init", self);
+		LOG_DEBUG("VALWindowDelegate <%p> init", self);
 	}
 	return self;
 }
 
 -(void)dealloc
 {
-	Log::log(Log_Type::MEM, "VALWindowDelegate <%p> dealloc", self);
+	LOG_DEBUG("VALWindowDelegate <%p> dealloc", self);
 	[super dealloc];
 }
 #endif // VAL_DEBUG_MAC_MEM_MANGEMENT

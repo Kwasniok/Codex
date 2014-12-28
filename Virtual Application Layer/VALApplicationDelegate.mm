@@ -8,6 +8,8 @@
 
 #import "VALApplicationDelegate.h"
 
+using namespace val;
+
 @implementation VALApplicationDelegate
 
 #if VAL_DEBUG_MAC_MEM_MANGEMENT
@@ -15,14 +17,14 @@
 {
 	if (self = [super init])
 	{
-		val::Log::log(val::Log_Type::MEM, "VALApplicationDelegate <%p> init", self);
+		LOG_DEBUG("VALApplicationDelegate <%p> init", self);
 	}
 	return self;
 }
 
 -(void)dealloc
 {
-	val::Log::log(val::Log_Type::MEM, "VALApplicationDelegate <%p> dealloc", self);
+	LOG_DEBUG("VALApplicationDelegate <%p> dealloc", self);
 	[super dealloc];
 }
 #endif // VAL_DEBUG_MAC_MEM_MANGEMENT

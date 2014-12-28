@@ -9,7 +9,7 @@
 #ifndef __Codex__VALApplication__
 #define __Codex__VALApplication__
 
-#include "config.h"
+#include "val_config.h"
 #include "log.h"
 #import <AppKit/AppKit.h>
 

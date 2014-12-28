@@ -37,13 +37,13 @@ void Window_Manager::add_window_to_list(val::Window *win)
 	{
 		windows.push_back(win);
 #if VAL_DEBUG_WINDOW_LIST
-		Log::log(Log_Type::MEM, "Added to window list:     <%p>", win);
+		LOG_DEBUG("Added to window list:     <%p>", win);
 #endif
 	}
 	else
 	{
 #if VAL_DEBUG_WINDOW_LIST
-		Log::log(Log_Type::MEM, "Double entry denied:      <%p>", win);
+		LOG_DEBUG("Double entry denied:      <%p>", win);
 #endif
 	}
 }
@@ -55,7 +55,7 @@ void Window_Manager::remove_window_from_list(val::Window *win)
 	{
 		windows.erase(it);
 #if VAL_DEBUG_WINDOW_LIST
-		Log::log(Log_Type::MEM, "Removed from window list: <%p>", win);
+		LOG_DEBUG("Removed from window list: <%p>", win);
 #endif
 	}
 }

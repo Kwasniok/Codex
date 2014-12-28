@@ -9,7 +9,7 @@
 #ifndef __Codex__VALWindowDelegate__
 #define __Codex__VALWindowDelegate__
 
-#include "config.h"
+#include "val_config.h"
 #include <AppKit/AppKit.h>
 #include "VALWindow.h"
 #include "window_manager.h"

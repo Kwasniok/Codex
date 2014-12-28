@@ -9,58 +9,53 @@
 #ifndef __Codex__log__
 #define __Codex__log__
 
+#include "log_config.h"
 #include <iostream>
 #include <string>
 
-namespace val {
 
-	// for approach 2
-	typedef int Log_Type_t;
-	enum Log_Type : Log_Type_t {
-		NONE    = 0x00,
-		ALL     =~0x00,
-		// attributes:
-	    DBUG    = 0x01, // missing 'E' is intended to avoid a conflict with the macro "DEBUG"
-		INFO    = 0x02, // INFO, WARING & ERROR are meant to be exclusive
-		WARNING = 0x04,
-		ERROR   = 0x08,
-		// categories:
-		MEM     = 0x10, // combine attribute(s) and cateory with or: DBUG | INFO | MEM
-	};
+#if ENABLE_DETAILED_LOG
+#define LOG(type, format, ...) val::Log::get().log(type "(%s l.%i):\n\t" format, __FILE__, __LINE__, ##__VA_ARGS__)
+#else
+#define LOG(type, format, ...) val::Log::get().log(format, ##__VA_ARGS__)
+#endif // ENABLE_DETAILED_LOG
+
+#if ENABLE_DEBUG_LOG
+#define LOG_DEBUG(format, ...) LOG("Debug", format, ##__VA_ARGS__)
+#define LOG_NORMAL(format, ...) LOG("Normal", format, ##__VA_ARGS__)
+#else
+#define LOG_DEBUG(format, ...)
+#define LOG_NORMAL(format, ...) val::Log::get().log(format, ##__VA_ARGS__)
+#endif // ENABLE_DEBUG_LOG
+
+
+namespace val {
 	
-	class Log { // TODO: MAKE MORE EFFICIENT: AVOID UNNECESSARY EVALUATION!
+	class Log {
 	private:
-		// approach 1:
-		static std::ostream* _out;
-		// approach 2:
-		static std::string prefix;
-		static Log_Type filter;
+		static Log global_log;
+		std::ostream* os;
+		std::string prefix;
+		static constexpr char const* endl = "\n";
 
 	public:
-		// approach 1:
-		static Log out;
-		static void set_ostream(std::ostream* o) {_out = o;}
-
-		template <class T>
-		Log& operator<<(T& x)
-		{
-			*_out << x;
-			return *this;
-		}
-
-		// approach 2:
-		static int log(Log_Type p, const char* format, ...) __printflike(2, 3);
-		static void set_log_type_as_filter(Log_Type lt);
-		static void add_log_type_to_filter(Log_Type lt);
-		static void remove_log_type_from_filter(Log_Type lt);
-		static void set_prefix(std::string& p);
+		static Log& get() {return global_log;}
+		Log(std::ostream* o) : os(o) { }
+		Log(std::ostream* o, const char* pfx) : os(o), prefix(pfx) { }
+		void set_ostream(std::ostream* o) {os = o;}
+		void set_prefix(const char* p) {prefix = p;}
+		//! FORMAT: <p>
+		//! %i or %d --> (signed) integer <p>
+		//! %l --> (singned) long <p>
+		//! %ui or %ud --> unsigned integer <p>
+		//! %ul --> unsigned long <p>
+		//! %f --> float & double <p>
+		//! %c --> char <p>
+		//! %s --> null-terminated string <p>
+		//! %p --> pointer <p>
+		//! %% --> '%'
+		void log(const char* format, ...);
 	};
-
-	constexpr char const* endl = "\n";
 }
-
-inline val::Log_Type operator&(val::Log_Type lhs, val::Log_Type rhs);
-inline val::Log_Type operator|(val::Log_Type lhs, val::Log_Type rhs);
-inline val::Log_Type operator~(val::Log_Type rhs);
 
 #endif /* defined(__Codex__log__) */

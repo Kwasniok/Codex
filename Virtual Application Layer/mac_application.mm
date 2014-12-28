@@ -33,7 +33,7 @@ bool Application_Mac::initialize()
 	// start application
 	[NSApp finishLaunching];
 
-	Window_Manager::set(new Window_Manager_Mac()); // TODO: fix mem leak
+	Window_Manager::set(new Window_Manager_Mac()); // NO mem leak due to Application::destroy()!
 	Window_Manager::get()->initialize();
 
 	return true;
@@ -42,8 +42,6 @@ bool Application_Mac::initialize()
 
 void Application_Mac::destroy()
 {
-	Application::destroy();
-	
 	// destroy autorelease pool, releases all autorelease instances
 	[autorelease_pool release];
 }

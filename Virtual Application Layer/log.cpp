@@ -10,24 +10,89 @@
 
 using namespace val;
 
-Log Log::out;
-std::ostream* Log::_out = &std::cout;
-std::string Log::prefix;
-Log_Type Log::filter = Log_Type::ALL;
+Log Log::global_log(&std::cout);
 
-int Log::log(Log_Type lt, const char * format, ...)
+// TODO: CHECK TYPECORRECTNESS
+void Log::log(const char * format, ...)
+// 2nd SAVE! (~2 times slower than os&opertaor<<(os&,T&))
 {
+	// set-up position counter & variadic argument list
+	size_t cur_pos = -1;
+	va_list args;
+	va_start(args, format);
+
+	// helper vars
+	std::ios_base::fmtflags old_flags;
+
+	// write prefix (if necessary)
+	if (!prefix.empty())
+	{
+		*os << prefix << ": ";
+	}
+
+	bool good = true;
+	char c;
+	while (good && (c = format[++cur_pos]) != '\0') {
+		if (c == '%') // special character
+		{
+			c = format[++cur_pos];
+			switch (c) {
+
+					// (sigend) numeric
+				case 'd': // falls through
+				case 'i': *os << va_arg(args, signed int); break;              // %d|i       --> signed int
+				case 'l': *os << va_arg(args, signed long); break;             // %l         --> signed long
+				case 'f': *os << va_arg(args, double); break;                  // %f         --> double
+					// unsigned numeric
+				case 'u':                                                        // %u...      --> unsigned ...
+					switch (c = format[++cur_pos]) {
+						default: *os << "%u" << c; break;                      // %u<undef>  --> %u<undef>
+						case '\0': *os << "%u"; good = false; break;           // %u\0       --> %u
+						case 'd': // falls through
+						case 'i': *os << va_arg(args, unsigned int); break;    // %u(d|i)    --> unsigned int
+						case 'l': *os << va_arg(args, unsigned long);          // %ul        --> unsigend long
+					}
+					break;
+
+					// character (sequence)
+				case 'c': *os << (char) va_arg(args, int); break;              // %c         --> char
+				case 's': *os << (const char*) va_arg(args, size_t); break;    // %s         --> string
+
+					// special
+				default:  *os << '%' << c; break;                              // %<undef>   --> %<undef>
+				case '\0': *os << '%'; good = false; break;                    // %\0        --> %
+				case '%': *os << '%'; break;                                   // %%         --> %
+				case 'p':
+					old_flags = os->flags();
+					os->setf(std::ios::hex, std::ios::basefield);
+					*os << "<0x" << va_arg(args, size_t) << '>';               // %p         --> pointer address
+					os->flags(old_flags);
+					break;
+
+			}
+		}
+		else // general character
+		{
+			os->put(c); // faser than "*_out << c;" due to no flush
+		}
+	}
+
+	va_end(args);
+
+	*os << endl; // flushes!
+}
+
+/* 1st NOT SAFE! (~5 times slower than os&opertaor<<(os&,T&))
+ {
 	if ((lt & filter) == lt) {
 		int return_value = -1;
-		constexpr int buffer_size = 2048; // TODO: NOT SAVE!!
-		static char buffer[buffer_size] = {'\0'};
+		constexpr size_t buffer_size = 2048;
+		static char buffer[buffer_size] = {'\0'};  // TODO: NOT SAVE!!
 		va_list args;
 
 		va_start(args, format);
 		return_value = vsprintf(buffer, format, args);
 		va_end(args);
-
-		//assert(return_value < buffer_size) // TODO: ADD ASSERT
 
 		if (!prefix.empty())
 		{
@@ -35,44 +100,8 @@ int Log::log(Log_Type lt, const char * format, ...)
 		}
 		*_out << buffer << endl;
 
-		return return_value;
+		ASSERTION_SLOW(return_value < buffer_size, "Memory curruption! Buffer is too small for expression.");
 	}
-
-	return 0;
 }
-
-void Log::set_log_type_as_filter(val::Log_Type lt)
-{
-	filter = lt;
-}
-
-void Log::add_log_type_to_filter(val::Log_Type lt)
-{
-	filter = filter | lt;
-}
-
-void Log::remove_log_type_from_filter(val::Log_Type lt)
-{
-	filter = filter & ~lt;
-}
-
-void Log::set_prefix(std::string &p)
-{
-	prefix = p;
-}
-
-inline Log_Type operator&(Log_Type lhs, Log_Type rhs)
-{
-	return static_cast<Log_Type>(Log_Type_t (lhs) & Log_Type_t (rhs));
-}
-
-inline Log_Type operator|(Log_Type lhs, Log_Type rhs)
-{
-	return static_cast<Log_Type>(Log_Type_t (lhs) | Log_Type_t (rhs));
-}
-
-inline Log_Type operator~(Log_Type rhs)
-{
-	return static_cast<Log_Type>(~ Log_Type_t(rhs));
-}
+*/
 

@@ -1,5 +1,5 @@
 //
-//  virtualApplicationLayer.h
+//  virtual_application_layer.h
 //  Codex
 //
 //  Created by Jens Kwasniok on 02.12.14.
@@ -9,7 +9,7 @@
 #ifndef Codex_virtualApplicationLayer_h
 #define Codex_virtualApplicationLayer_h
 
-#include "log.h"
+#include "localized_strings.h"
 #include "application.h"
 #include "window_manager.h"
 #include "window.h"

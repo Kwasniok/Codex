@@ -14,7 +14,7 @@
 		<string>https://github.com/Jasper42/Codex.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Codex.xcodeproj/project.xcworkspace</string>
+	<string>Codex.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>1C11C8E059155975178FAA802E947442B4E1E003</key>

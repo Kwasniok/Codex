@@ -6,6 +6,12 @@
 //  Copyright (c) 2014 Jens Kwasniok. All rights reserved.
 //
 
+
+								 ****************************
+								 THIS PART IS NOW DEPRECATED
+								 ****************************
+
+
 The application layer consists of two (sub)layers.
 
 	1) One is the "middle" layer which mediates between your application and the platfrom-specific

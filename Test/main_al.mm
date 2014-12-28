@@ -6,10 +6,12 @@
 //  Copyright (c) 2014 Jens Kwasniok. All rights reserved.
 //
 
+/* ********* *
+   DEPRECTED
+ * ********* */
+
 #include <iostream>
-
 #include "measure.h"
-
 #include "applicationLayer.h"
 
 
@@ -19,7 +21,7 @@ void do_f();
 
 int main(int argc, const char * argv[])
 {
-	std::cout << measure_time<std::chrono::milliseconds>(do_f) << "ms." << std::endl;
+	do_f();
 	return 0;
 }
 

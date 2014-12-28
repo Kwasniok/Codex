@@ -9,7 +9,7 @@
 #ifndef __Codex__window__
 #define __Codex__window__
 
-#include "config.h"
+#include "val_config.h"
 
 namespace val {
 

@@ -12,27 +12,28 @@ using namespace val;
 
 @implementation VALApplication
 
-#if VAL_DEBUG_MAC_PRINT_APPLICATION_EVENTS
+
 - (void)sendEvent:(NSEvent *)event
 {
-	Log::log(Log_Type::DBUG, "VALApplication <%p> event: %s", self, event.description.UTF8String);
+	#if VAL_DEBUG_MAC_PRINT_APPLICATION_EVENTS
+	LOG_DEBUG("VALApplication %p event: %s", self, event.description.UTF8String);
+	#endif
 	[super sendEvent:event];
 }
-#endif // VAL_DEBUG_MAC_PRINT_APPLICATION_EVENTS
 
 #if VAL_DEBUG_MAC_MEM_MANGEMENT
 -(id)init
 {
 	if (self = [super init])
 	{
-		val::Log::log(val::Log_Type::MEM, "VALApplication <%p> init", self);
+		LOG_DEBUG("VALApplication <%p> init", self);
 	}
 	return self;
 }
 
 -(void)dealloc
 {
-	val::Log::log(val::Log_Type::MEM, "VALApplication <%p> dealloc", self);
+	LOG_DEBUG("VALApplication <%p> dealloc", self);
 	[super dealloc];
 }
 #endif // VAL_DEBUG_MAC_MEM_MANGEMENT
