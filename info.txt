@@ -1,0 +1,9 @@
+//
+//  info.txt
+//  Codex
+//
+//  Created by Jens Kwasniok on 26.09.14.
+//  Copyright (c) 2014 Jens Kwasniok. All rights reserved.
+//
+
+Some parts of this software are inspired by the GLFW (3.1) library which can by found here: www.glfw.org (https://github.com/glfw/glfw.git).
