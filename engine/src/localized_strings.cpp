@@ -10,18 +10,6 @@
 
 using namespace cdx;
 
-bool Localized_String_Map::set_language_id(const std::string &lang_id)
-{
-	if (language_id.empty()) {
-		language_id = lang_id;
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
-
 void Localized_String_Map::add_str(const int n, const std::string str)
 {
 	std::pair<int, std::string> isp = {n, str};
@@ -51,6 +39,17 @@ const char* Localized_String_Map::get_str(const int n) const
 	{
 		return NO_STRING_FOR_ID_MSG;
 	}
+}
+
+bool Localized_String_Map::remove_str(const int n)
+{
+	auto it = strings.find(n);
+	if (it != strings.end())
+	{
+		strings.erase(it);
+		return true;
+	}
+	return false;
 }
 
 bool Localized_String_Map::copy_from_file(const std::string &file_path)
@@ -170,11 +169,28 @@ void Localizer::add_language(cdx::Localized_String_Map&& lsm)
 	all_languages[lsm.get_language_id()] = std::move(lsm);
 }
 
+bool Localizer::remove_language(const std::string lang_id)
+{
+	auto it = all_languages.find(lang_id);
+	if (it != all_languages.end()) // language defined?
+	{
+		Localized_String_Map* rm = &it->second;
+		if (rm == default_language) default_language = nullptr;
+		if (rm == fallback_language) fallback_language = nullptr;
+
+		all_languages.erase(it);
+
+		return true;
+	}
+	return false;
+}
+
 Localized_String_Map* Localizer::get_language(const std::string& lang_id)
 {
 	auto it = all_languages.find(lang_id);
 	if (it != all_languages.end())
 	{
+		// language defined
 		return &all_languages[lang_id];
 	}
 	LOG_NORMAL("Language identifier unknown! Nullptr is returned for language=\"%s\".", lang_id.c_str());
@@ -213,7 +229,7 @@ bool Localizer::set_fallback_language(const std::string &lang_id)
 	return false;
 }
 
-const char* Localizer::get_str_from_default_language(const int n) const
+const char* Localizer::get_str_non_static(const int n) const
 {
 	const char* str = Localized_String_Map::NO_STRING_FOR_ID_MSG;
 
@@ -242,5 +258,5 @@ const char* Localizer::get_str_from_default_language(const int n) const
 
 const char* Localizer::get_str(const int n)
 {
-	return current->get_str_from_default_language(n);
+	return current->get_str_non_static(n);
 }
