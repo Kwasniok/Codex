@@ -25,6 +25,7 @@
 		B49D6DC81A531AE20015C436 /* log_config.h in Headers */ = {isa = PBXBuildFile; fileRef = B49D6DC51A531AE20015C436 /* log_config.h */; };
 		B49D6DC91A531AE20015C436 /* log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B49D6DC61A531AE20015C436 /* log.cpp */; };
 		B49D6DCA1A531AE20015C436 /* log.h in Headers */ = {isa = PBXBuildFile; fileRef = B49D6DC71A531AE20015C436 /* log.h */; };
+		B4A404D71A55E6430054E055 /* res in CopyFiles */ = {isa = PBXBuildFile; fileRef = B49D6DCF1A531BDE0015C436 /* res */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				B4A404D71A55E6430054E055 /* res in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
