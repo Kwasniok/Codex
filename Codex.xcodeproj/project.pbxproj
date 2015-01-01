@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B49D6DA31A5317250015C436 /* mac_main_test.mm in Sources */ = {isa = PBXBuildFile; fileRef = B49D6D941A5316590015C436 /* mac_main_test.mm */; };
 		B49D6DAC1A5317840015C436 /* application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B47910341A2E494C00B8A1F5 /* application.cpp */; };
 		B49D6DAD1A5317840015C436 /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B461292B1A2E6277007F66A3 /* window.cpp */; };
 		B49D6DAE1A5317840015C436 /* window_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B47910301A2E304200B8A1F5 /* window_manager.cpp */; };
@@ -76,7 +75,6 @@
 		B47910391A2E4A0800B8A1F5 /* mac_application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = mac_application.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B47B0A751A4B14700019C9AD /* assertion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = assertion.h; sourceTree = "<group>"; };
 		B48B57E41A5345C100E677B1 /* mac_codex_engine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mac_codex_engine.h; sourceTree = "<group>"; };
-		B49D6D941A5316590015C436 /* mac_main_test.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = mac_main_test.mm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B49D6D9C1A5317060015C436 /* Codex_Engine_Test_Mac */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Codex_Engine_Test_Mac; sourceTree = BUILT_PRODUCTS_DIR; };
 		B49D6DA81A5317610015C436 /* libCodex_Engine_Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCodex_Engine_Mac.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B49D6DBB1A5318040015C436 /* mac_config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = mac_config.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -117,7 +115,6 @@
 			children = (
 				B4F7F79919DEE81800302B5C /* info.txt */,
 				B479101D1A2E294B00B8A1F5 /* Engine */,
-				B49D6D9D1A5317060015C436 /* Codex_Engine_Test_Mac */,
 				B4F7F7C319DEE93700302B5C /* Frameworks */,
 				B4F7F7C419DEE94600302B5C /* Products */,
 				B49D6D9C1A5317060015C436 /* Codex_Engine_Test_Mac */,
@@ -223,14 +220,6 @@
 				B48B57E41A5345C100E677B1 /* mac_codex_engine.h */,
 			);
 			path = include_mac;
-			sourceTree = "<group>";
-		};
-		B49D6D9D1A5317060015C436 /* Codex_Engine_Test_Mac */ = {
-			isa = PBXGroup;
-			children = (
-				B49D6D941A5316590015C436 /* mac_main_test.mm */,
-			);
-			path = Codex_Engine_Test_Mac;
 			sourceTree = "<group>";
 		};
 		B49D6DC21A531A740015C436 /* localization */ = {
@@ -370,7 +359,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B49D6DA31A5317250015C436 /* mac_main_test.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
