@@ -17,42 +17,15 @@
 		B49D6DB31A5317840015C436 /* CDXWindow.mm in Sources */ = {isa = PBXBuildFile; fileRef = B46129311A2E6414007F66A3 /* CDXWindow.mm */; };
 		B49D6DB41A5317840015C436 /* mac_window_manager.mm in Sources */ = {isa = PBXBuildFile; fileRef = B479102C1A2E2FC100B8A1F5 /* mac_window_manager.mm */; };
 		B49D6DB51A5317840015C436 /* CDXWindowDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = B46129351A2E64D6007F66A3 /* CDXWindowDelegate.mm */; };
-		B49D6DB71A53179A0015C436 /* libCodex_Engine_Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B49D6DA81A5317610015C436 /* libCodex_Engine_Mac.a */; };
-		B49D6DBA1A5317B20015C436 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4F7F7C019DEE90800302B5C /* AppKit.framework */; };
 		B49D6DBF1A531A6D0015C436 /* localized_strings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B49D6DBC1A531A6D0015C436 /* localized_strings.cpp */; };
 		B49D6DC01A531A6D0015C436 /* localized_strings.h in Headers */ = {isa = PBXBuildFile; fileRef = B49D6DBD1A531A6D0015C436 /* localized_strings.h */; };
 		B49D6DC41A531AD20015C436 /* loc_string_list.h in Headers */ = {isa = PBXBuildFile; fileRef = B49D6DC31A531AD20015C436 /* loc_string_list.h */; };
 		B49D6DC81A531AE20015C436 /* log_config.h in Headers */ = {isa = PBXBuildFile; fileRef = B49D6DC51A531AE20015C436 /* log_config.h */; };
 		B49D6DC91A531AE20015C436 /* log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B49D6DC61A531AE20015C436 /* log.cpp */; };
 		B49D6DCA1A531AE20015C436 /* log.h in Headers */ = {isa = PBXBuildFile; fileRef = B49D6DC71A531AE20015C436 /* log.h */; };
-		B4A404D71A55E6430054E055 /* res in CopyFiles */ = {isa = PBXBuildFile; fileRef = B49D6DCF1A531BDE0015C436 /* res */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		B49D6DB81A5317A20015C436 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A46AA06319DEE68D00200EBC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B49D6DA71A5317610015C436;
-			remoteInfo = Codex_Engine_Mac;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		B49D6D9A1A5317060015C436 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
-			dstPath = "";
-			dstSubfolderSpec = 16;
-			files = (
-				B4A404D71A55E6430054E055 /* res in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		B4125EB71A55E7BC00E1ACC6 /* Codex_Engine_Test_Mac */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = Codex_Engine_Test_Mac; path = /Users/Jens/Datein/Xcode/Codex/build/Debug/Codex_Engine_Test_Mac; sourceTree = "<absolute>"; };
 		B45ADB361A2F59CC00390C6E /* measure.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = measure.h; sourceTree = "<group>"; };
 		B461292B1A2E6277007F66A3 /* window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = window.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		B46129301A2E6414007F66A3 /* CDXWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CDXWindow.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -93,15 +66,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B49D6D991A5317060015C436 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B49D6DBA1A5317B20015C436 /* AppKit.framework in Frameworks */,
-				B49D6DB71A53179A0015C436 /* libCodex_Engine_Mac.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B49D6DA51A5317610015C436 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -285,24 +249,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		B49D6D9B1A5317060015C436 /* Codex_Engine_Test_Mac */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B49D6DA01A5317060015C436 /* Build configuration list for PBXNativeTarget "Codex_Engine_Test_Mac" */;
-			buildPhases = (
-				B49D6D981A5317060015C436 /* Sources */,
-				B49D6D991A5317060015C436 /* Frameworks */,
-				B49D6D9A1A5317060015C436 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B49D6DB91A5317A20015C436 /* PBXTargetDependency */,
-			);
-			name = Codex_Engine_Test_Mac;
-			productName = Codex_Engine_Test_Mac;
-			productReference = B4125EB71A55E7BC00E1ACC6 /* Codex_Engine_Test_Mac */;
-			productType = "com.apple.product-type.tool";
-		};
 		B49D6DA71A5317610015C436 /* Codex_Engine_Mac */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B49D6DA91A5317620015C436 /* Build configuration list for PBXNativeTarget "Codex_Engine_Mac" */;
@@ -329,9 +275,6 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Codex Soft";
 				TargetAttributes = {
-					B49D6D9B1A5317060015C436 = {
-						CreatedOnToolsVersion = 6.1.1;
-					};
 					B49D6DA71A5317610015C436 = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
@@ -349,20 +292,12 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B49D6D9B1A5317060015C436 /* Codex_Engine_Test_Mac */,
 				B49D6DA71A5317610015C436 /* Codex_Engine_Mac */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		B49D6D981A5317060015C436 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B49D6DA41A5317610015C436 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -383,14 +318,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		B49D6DB91A5317A20015C436 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B49D6DA71A5317610015C436 /* Codex_Engine_Mac */;
-			targetProxy = B49D6DB81A5317A20015C436 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		A46AA07219DEE68D00200EBC /* Debug */ = {
@@ -463,32 +390,6 @@
 			};
 			name = Release;
 		};
-		B49D6DA11A5317060015C436 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = NO;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		B49D6DA21A5317060015C436 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = NO;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		B49D6DAA1A5317620015C436 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -527,15 +428,6 @@
 			buildConfigurations = (
 				A46AA07219DEE68D00200EBC /* Debug */,
 				A46AA07319DEE68D00200EBC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B49D6DA01A5317060015C436 /* Build configuration list for PBXNativeTarget "Codex_Engine_Test_Mac" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B49D6DA11A5317060015C436 /* Debug */,
-				B49D6DA21A5317060015C436 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
