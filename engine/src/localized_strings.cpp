@@ -10,62 +10,58 @@
 
 using namespace cdx;
 
-localized_strings* localized_strings::current = nullptr;
-
-void localized_strings::set(cdx::localized_strings* ls)
+void Localized_String_Map::add_str(const int n, const std::string str)
 {
-	current = ls;
+	std::pair<int, std::string> isp = {n, str};
+	add_str(isp);
 }
 
-bool localized_strings::set_language_id(const std::string &lang_id)
-{
-	if (language_id.empty()) {
-		language_id = lang_id;
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
-
-void localized_strings::add_str(std::pair<int, std::string> &isp)
+void Localized_String_Map::add_str(std::pair<int, std::string> &isp)
 {
 	auto it = strings.find(isp.first);
 	if (it != strings.end())
 	{
-		LOG_NORMAL("Redefinition of a loalized string with id=%i.", isp.first);
+		LOG_NORMAL("Redefinition of a loalized string for language=\"%s\" and id=%i.",
+				   language_id.c_str(), isp.first);
 	}
 
 	strings[isp.first] = isp.second;
 }
 
-std::string localized_strings::get_str(const int number) const
+const char* Localized_String_Map::get_str(const int n) const
 {
-	std::string s;
-	auto it = strings.find(number);
+	auto it = strings.find(n);
 	if (it != strings.end())
 	{
-		s = it->second;
+		return it->second.c_str();
 	}
 	else
 	{
-		LOG_NORMAL("No localized string found for id=%i", number);
-		s += "~UNKNOWN LOCALIZED STRING FOR N=";
-		s += number;
-		s+= "~";
+		return NO_STRING_FOR_ID_MSG;
 	}
-
-	return s;
 }
 
-bool cdx::create_localized_strings_from_file(cdx::localized_strings& ls, const std::string& file_path)
+bool Localized_String_Map::remove_str(const int n)
+{
+	auto it = strings.find(n);
+	if (it != strings.end())
+	{
+		strings.erase(it);
+		return true;
+	}
+	return false;
+}
+
+bool Localized_String_Map::copy_from_file(const std::string &file_path)
 {
 	bool good = false;
 	std::ifstream ifs (file_path);
 	if (ifs.good())
 	{
-		ifs >> ls;
+		this->language_id.clear();
+		this->strings.clear();
+		
+		ifs >> *this;
 		good = true;
 	}
 	else
@@ -77,7 +73,7 @@ bool cdx::create_localized_strings_from_file(cdx::localized_strings& ls, const s
 	return good;
 }
 
-std::istream& operator>>(std::istream& is, cdx::localized_strings& ls)
+std::istream& operator>>(std::istream& is, cdx::Localized_String_Map& ls)
 {
 	// language identifier:
 	std::string lang_id;
@@ -105,7 +101,7 @@ std::istream& operator>>(std::istream& is, cdx::localized_strings& ls)
 	return is;
 }
 
-std::ostream& operator<<(std::ostream& os, cdx::localized_strings& ls)
+std::ostream& operator<<(std::ostream& os, cdx::Localized_String_Map& ls)
 {
 	// language identifier:
 	os << ls.get_language_id() << std::endl;
@@ -159,4 +155,108 @@ std::ostream& operator<<(std::ostream& os, std::pair<int, std::string>& p)
 	os << p.first << ", \"" << p.second << "\"";
 
 	return os;
+}
+
+Localizer* Localizer::current = nullptr;
+
+void Localizer::add_language(cdx::Localized_String_Map& lsm)
+{
+	all_languages[lsm.get_language_id()] = lsm;
+}
+
+void Localizer::add_language(cdx::Localized_String_Map&& lsm)
+{
+	all_languages[lsm.get_language_id()] = std::move(lsm);
+}
+
+bool Localizer::remove_language(const std::string lang_id)
+{
+	auto it = all_languages.find(lang_id);
+	if (it != all_languages.end()) // language defined?
+	{
+		Localized_String_Map* rm = &it->second;
+		if (rm == default_language) default_language = nullptr;
+		if (rm == fallback_language) fallback_language = nullptr;
+
+		all_languages.erase(it);
+
+		return true;
+	}
+	return false;
+}
+
+Localized_String_Map* Localizer::get_language(const std::string& lang_id)
+{
+	auto it = all_languages.find(lang_id);
+	if (it != all_languages.end())
+	{
+		// language defined
+		return &all_languages[lang_id];
+	}
+	LOG_NORMAL("Language identifier unknown! Nullptr is returned for language=\"%s\".", lang_id.c_str());
+	return nullptr;
+}
+
+bool Localizer::has_language(const std::string& lang_id) const
+{
+	auto it = all_languages.find(lang_id);
+	return it != all_languages.end();
+}
+
+bool Localizer::set_default_language(const std::string &lang_id)
+{
+	for (auto& it : all_languages)
+	{
+		if (it.first == lang_id)
+		{
+			default_language = &it.second;
+			return true;
+		}
+	}
+	return false;
+}
+
+bool Localizer::set_fallback_language(const std::string &lang_id)
+{
+	for (auto& it : all_languages)
+	{
+		if (it.first == lang_id)
+		{
+			fallback_language = &it.second;
+			return true;
+		}
+	}
+	return false;
+}
+
+const char* Localizer::get_str_non_static(const int n) const
+{
+	const char* str = Localized_String_Map::NO_STRING_FOR_ID_MSG;
+
+	if (default_language)
+	{
+		str = default_language->get_str(n);
+
+		if (str != Localized_String_Map::NO_STRING_FOR_ID_MSG) // (lazy comparison allowed due to constant)
+		{
+			return str;
+		}
+	}
+	if (fallback_language)
+	{
+		str = fallback_language->get_str(n);
+
+		if (str != Localized_String_Map::NO_STRING_FOR_ID_MSG) // (lazy comparison allowed due to constant)
+		{
+			return str;
+		}
+	}
+
+	LOG_NORMAL("No localized string with id=%i for default and fallback language found!", n);
+	return str;
+}
+
+const char* Localizer::get_str(const int n)
+{
+	return current->get_str_non_static(n);
 }
