@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B41CC02C1A57059800A16B0D /* mac_tests.mm in Sources */ = {isa = PBXBuildFile; fileRef = B41CC02B1A57059800A16B0D /* mac_tests.mm */; };
+		B41CC02E1A5706ED00A16B0D /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4F7F7C019DEE90800302B5C /* AppKit.framework */; };
+		B41CC02F1A57072400A16B0D /* libCodex_Engine_Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B49D6DA81A5317610015C436 /* libCodex_Engine_Mac.a */; };
+		B43ABE2D1A5703FB00B3FBFA /* res in CopyFiles */ = {isa = PBXBuildFile; fileRef = B49D6DCF1A531BDE0015C436 /* res */; };
 		B49D6DAC1A5317840015C436 /* application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B47910341A2E494C00B8A1F5 /* application.cpp */; };
 		B49D6DAD1A5317840015C436 /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B461292B1A2E6277007F66A3 /* window.cpp */; };
 		B49D6DAE1A5317840015C436 /* window_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B47910301A2E304200B8A1F5 /* window_manager.cpp */; };
@@ -25,7 +29,32 @@
 		B49D6DCA1A531AE20015C436 /* log.h in Headers */ = {isa = PBXBuildFile; fileRef = B49D6DC71A531AE20015C436 /* log.h */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		B43ABE2B1A5703F400B3FBFA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A46AA06319DEE68D00200EBC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B49D6DA71A5317610015C436;
+			remoteInfo = Codex_Engine_Mac;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B43ABE211A5703DC00B3FBFA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				B43ABE2D1A5703FB00B3FBFA /* res in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		B41CC02B1A57059800A16B0D /* mac_tests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = mac_tests.mm; sourceTree = "<group>"; };
+		B43ABE231A5703DC00B3FBFA /* Codex_Engine_Mac_Tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Codex_Engine_Mac_Tests; sourceTree = BUILT_PRODUCTS_DIR; };
 		B45ADB361A2F59CC00390C6E /* measure.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = measure.h; sourceTree = "<group>"; };
 		B461292B1A2E6277007F66A3 /* window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = window.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		B46129301A2E6414007F66A3 /* CDXWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CDXWindow.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -66,6 +95,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B43ABE201A5703DC00B3FBFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B41CC02E1A5706ED00A16B0D /* AppKit.framework in Frameworks */,
+				B41CC02F1A57072400A16B0D /* libCodex_Engine_Mac.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B49D6DA51A5317610015C436 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -82,9 +120,25 @@
 				B4F7F79919DEE81800302B5C /* info.txt */,
 				B479101D1A2E294B00B8A1F5 /* Engine */,
 				B4F7F7C319DEE93700302B5C /* Frameworks */,
-				B4F7F7C419DEE94600302B5C /* Products */,
-				B49D6DA81A5317610015C436 /* libCodex_Engine_Mac.a */,
+				B4F7F7C419DEE94600302B5C /* Final Products */,
+				B41CC02D1A57064E00A16B0D /* Test Products */,
 			);
+			sourceTree = "<group>";
+		};
+		B41CC02A1A57057400A16B0D /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				B41CC02B1A57059800A16B0D /* mac_tests.mm */,
+			);
+			path = tests;
+			sourceTree = "<group>";
+		};
+		B41CC02D1A57064E00A16B0D /* Test Products */ = {
+			isa = PBXGroup;
+			children = (
+				B43ABE231A5703DC00B3FBFA /* Codex_Engine_Mac_Tests */,
+			);
+			name = "Test Products";
 			sourceTree = "<group>";
 		};
 		B42D232C1A30BE260012BB06 /* window manager */ = {
@@ -130,6 +184,7 @@
 				B4F7F7A819DEE81800302B5C /* util */,
 				B48B57E51A5345C800E677B1 /* include_mac */,
 				B43D9A011A49C8F7007A14DA /* src_mac */,
+				B41CC02A1A57057400A16B0D /* tests */,
 				B49D6DCF1A531BDE0015C436 /* res */,
 			);
 			name = Engine;
@@ -225,11 +280,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B4F7F7C419DEE94600302B5C /* Products */ = {
+		B4F7F7C419DEE94600302B5C /* Final Products */ = {
 			isa = PBXGroup;
 			children = (
+				B49D6DA81A5317610015C436 /* libCodex_Engine_Mac.a */,
 			);
-			name = Products;
+			name = "Final Products";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,6 +305,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		B43ABE221A5703DC00B3FBFA /* Codex_Engine_Mac_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B43ABE271A5703DC00B3FBFA /* Build configuration list for PBXNativeTarget "Codex_Engine_Mac_Tests" */;
+			buildPhases = (
+				B43ABE1F1A5703DC00B3FBFA /* Sources */,
+				B43ABE201A5703DC00B3FBFA /* Frameworks */,
+				B43ABE211A5703DC00B3FBFA /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B43ABE2C1A5703F400B3FBFA /* PBXTargetDependency */,
+			);
+			name = Codex_Engine_Mac_Tests;
+			productName = Codex_Engine_Mac_Tests;
+			productReference = B43ABE231A5703DC00B3FBFA /* Codex_Engine_Mac_Tests */;
+			productType = "com.apple.product-type.tool";
+		};
 		B49D6DA71A5317610015C436 /* Codex_Engine_Mac */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B49D6DA91A5317620015C436 /* Build configuration list for PBXNativeTarget "Codex_Engine_Mac" */;
@@ -275,6 +349,9 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Codex Soft";
 				TargetAttributes = {
+					B43ABE221A5703DC00B3FBFA = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
 					B49D6DA71A5317610015C436 = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
@@ -293,11 +370,20 @@
 			projectRoot = "";
 			targets = (
 				B49D6DA71A5317610015C436 /* Codex_Engine_Mac */,
+				B43ABE221A5703DC00B3FBFA /* Codex_Engine_Mac_Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B43ABE1F1A5703DC00B3FBFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B41CC02C1A57059800A16B0D /* mac_tests.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B49D6DA41A5317610015C436 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -318,6 +404,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B43ABE2C1A5703F400B3FBFA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B49D6DA71A5317610015C436 /* Codex_Engine_Mac */;
+			targetProxy = B43ABE2B1A5703F400B3FBFA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		A46AA07219DEE68D00200EBC /* Debug */ = {
@@ -390,6 +484,32 @@
 			};
 			name = Release;
 		};
+		B43ABE281A5703DC00B3FBFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B43ABE291A5703DC00B3FBFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		B49D6DAA1A5317620015C436 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -428,6 +548,15 @@
 			buildConfigurations = (
 				A46AA07219DEE68D00200EBC /* Debug */,
 				A46AA07319DEE68D00200EBC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B43ABE271A5703DC00B3FBFA /* Build configuration list for PBXNativeTarget "Codex_Engine_Mac_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B43ABE281A5703DC00B3FBFA /* Debug */,
+				B43ABE291A5703DC00B3FBFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

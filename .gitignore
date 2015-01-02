@@ -13,6 +13,3 @@ xcuserdata
 
 # Xcode Source-Control
 *.moved-aside
-
-# Folder For Tests only
-./test
