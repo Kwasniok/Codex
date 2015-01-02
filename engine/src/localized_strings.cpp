@@ -10,13 +10,16 @@
 
 using namespace cdx;
 
-void Localized_String_Map::add_str(const int n, const std::string str)
+const String_UTF8& Localized_String_Map::NO_STRING_FOR_ID_MSG
+	= String_UTF8("~NO LOCALIZED STRING~");
+
+void Localized_String_Map::add_str(const int n, const String_UTF8& str)
 {
 	std::pair<int, std::string> isp = {n, str};
 	add_str(isp);
 }
 
-void Localized_String_Map::add_str(std::pair<int, std::string> &isp)
+void Localized_String_Map::add_str(std::pair<int, String_UTF8>& isp)
 {
 	auto it = strings.find(isp.first);
 	if (it != strings.end())
@@ -28,12 +31,12 @@ void Localized_String_Map::add_str(std::pair<int, std::string> &isp)
 	strings[isp.first] = isp.second;
 }
 
-const char* Localized_String_Map::get_str(const int n) const
+const String_UTF8& Localized_String_Map::get_str(const int n) const
 {
 	auto it = strings.find(n);
 	if (it != strings.end())
 	{
-		return it->second.c_str();
+		return it->second;
 	}
 	else
 	{
@@ -73,91 +76,7 @@ bool Localized_String_Map::copy_from_file(const std::string &file_path)
 	return good;
 }
 
-std::istream& operator>>(std::istream& is, cdx::Localized_String_Map& ls)
-{
-	// language identifier:
-	std::string lang_id;
-	is >> lang_id;
-	ls.set_language_id(lang_id);
-
-	// id string list:
-	std::pair<int, std::string> p;
-	char c;
-
-	do
-	{
-		is >> p;
-		if (!is.good()) break;
-		is >> c;
-		if (c != ';')
-		{
-			is.setf(std::ios_base::failbit);
-		}
-		if (!is.good()) break;
-		ls.add_str(p);
-	}
-	while (is.good());
-
-	return is;
-}
-
-std::ostream& operator<<(std::ostream& os, cdx::Localized_String_Map& ls)
-{
-	// language identifier:
-	os << ls.get_language_id() << std::endl;
-
-	// id string list:
-	std::pair<int, std::string> p;
-	for (auto it : ls.get_all())
-	{
-		p.first = it.first;
-		p.second = it.second;
-		os << p;
-		os << ";" << std::endl;
-	}
-
-	return os;
-}
-
-std::istream& operator>>(std::istream& is, std::pair<int, std::string>& p)
-{
-	std::pair<int, std::string> tmp;
-
-	char c;
-	is >> tmp.first;
-	is >> c;
-	if (c != ',')
-	{
-		is.setf(std::ios_base::failbit);
-		return is;
-	}
-	is >> c;
-	if (c != '"')
-	{
-		is.setf(std::ios_base::failbit);
-		return is;
-	}
-	while (c = is.get(), c != '"')
-	{
-		tmp.second += c;
-	}
-
-	if (is.good())
-	{
-		p = tmp;
-	}
-
-	return is;
-}
-
-std::ostream& operator<<(std::ostream& os, std::pair<int, std::string>& p)
-{
-	os << p.first << ", \"" << p.second << "\"";
-
-	return os;
-}
-
-Localizer* Localizer::current = nullptr;
+Localizer Localizer::current;
 
 void Localizer::add_language(cdx::Localized_String_Map& lsm)
 {
@@ -229,34 +148,129 @@ bool Localizer::set_fallback_language(const std::string &lang_id)
 	return false;
 }
 
-const char* Localizer::get_str_non_static(const int n) const
+const String_UTF8& Localizer::get_str(const int n) const
 {
-	const char* str = Localized_String_Map::NO_STRING_FOR_ID_MSG;
-
 	if (default_language)
 	{
-		str = default_language->get_str(n);
+		const String_UTF8& str = default_language->get_str(n);
 
-		if (str != Localized_String_Map::NO_STRING_FOR_ID_MSG) // (lazy comparison allowed due to constant)
+		if (str != Localized_String_Map::NO_STRING_FOR_ID_MSG)
 		{
 			return str;
 		}
 	}
 	if (fallback_language)
 	{
-		str = fallback_language->get_str(n);
+		const String_UTF8& str = fallback_language->get_str(n);
 
-		if (str != Localized_String_Map::NO_STRING_FOR_ID_MSG) // (lazy comparison allowed due to constant)
+		if (str != Localized_String_Map::NO_STRING_FOR_ID_MSG)
 		{
 			return str;
 		}
 	}
 
 	LOG_NORMAL("No localized string with id=%i for default and fallback language found!", n);
-	return str;
+	return Localized_String_Map::NO_STRING_FOR_ID_MSG;
 }
 
-const char* Localizer::get_str(const int n)
+void Localizer::clear()
 {
-	return current->get_str_non_static(n);
+	default_language = nullptr;
+	fallback_language = nullptr;
+	all_languages.clear();
+}
+
+std::istream& operator>>(std::istream& is, cdx::Localized_String_Map& ls)
+{
+	// unicode format & language identifier
+	std::string s;
+	is >> s;
+	if (s == "UTF8")
+	{
+		is >> s;
+	}
+	else
+	{
+		LOG_NORMAL("Found missing format signature for localization file (expected 'UTF8')!");
+	}
+	ls.set_language_id(s);
+
+	// id string list:
+	std::pair<int, std::string> p;
+	char c;
+
+	do
+	{
+		is >> p;
+		if (!is.good()) break;
+		is >> c;
+		if (c != ';')
+		{
+			is.setf(std::ios_base::failbit);
+		}
+		if (!is.good()) break;
+		ls.add_str(p);
+	}
+	while (is.good());
+
+	return is;
+}
+
+std::ostream& operator<<(std::ostream& os, cdx::Localized_String_Map& ls)
+{
+	// unicode format
+	os << "UTF8" << std::endl;
+
+	// language identifier:
+	os << ls.get_language_id() << std::endl;
+
+	// id string list:
+	std::pair<int, std::string> p;
+	for (auto it : ls.get_all())
+	{
+		p.first = it.first;
+		p.second = it.second;
+		os << p;
+		os << ";" << std::endl;
+	}
+
+	return os;
+}
+
+std::istream& operator>>(std::istream& is, std::pair<int, std::string>& p)
+{
+	std::pair<int, std::string> tmp;
+
+	char c;
+	is >> tmp.first;
+	is >> c;
+	if (c != ',')
+	{
+		is.setf(std::ios_base::failbit);
+		return is;
+	}
+	is >> c;
+	if (c != '"')
+	{
+		is.setf(std::ios_base::failbit);
+		return is;
+	}
+	while (c = is.get(), is.good() && c != '"')
+	{
+		tmp.second += c;
+	}
+
+	if (is.good())
+	{
+		p = tmp;
+	}
+
+	return is;
+}
+
+std::ostream& operator<<(std::ostream& os, std::pair<int, std::string>& p)
+{
+	os << p.first << ", \"" << p.second << "\"";
+
+	return os;
 }

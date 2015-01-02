@@ -17,50 +17,53 @@
 
 namespace cdx {
 
-	//TODO: EXTENED FOR UNICODE STRINGS!
+	// TODO: IMPLEMENT COMPLETE 'String_UTF8' CLASS & FORMAT CHECKS!
+	typedef std::string String_UTF8;
+
 	class Localized_String_Map {
 
 		//! maps all ids to the correponding string for the givien language
-		std::map<int, std::string> strings;
+		std::map<int, String_UTF8> strings;
 		//! contains the language identifier
 		std::string language_id;
 	public:
-		// pointer value is used for lazy comparison!!
+		// used as constant: allowes internal lazy comperison via c-string pointer (not used)
 		//! unique constant to indicate a missed string
-		constexpr static const char* NO_STRING_FOR_ID_MSG = "~NO LOCALIZED STRING~";
+		static const String_UTF8& NO_STRING_FOR_ID_MSG;
 
 		//! adds the vlaue pair (redefinitions are allowed)
 		//! @see get_str(), get_all(), remove_str()
-		void add_str(const int n, const std::string str);
+		void add_str(const int n, const String_UTF8& str);
 		//! adds the vlaue pair (redefinitions are allowed)
 		//! @see get_str(), get_all(), remove_str()
-		void add_str(std::pair<int, std::string>& isp);
+		void add_str(std::pair<int, String_UTF8>& isp);
 		//! @return localized string for id and given langauge (as a c-string to improve performance)
 		//! @see add_str, get_all(), remove_str()
-		const char* get_str(const int n) const;
+		const String_UTF8& get_str(const int n) const;
 		//! @return true if string id was found
 		//! @see add_str(), get_str(), get_all()
 		bool remove_str(const int n);
 		//! @return map with all localized strings
 		//! @see add_str(), get_str(), remove_str()
-		const std::map<int, std::string> get_all() const {return strings;}
+		const std::map<int, String_UTF8> get_all() const {return strings;}
 
 		//! sets the language identifier (only once allowed)
 		//! @see get_language_id()
-		void set_language_id(const std::string& lang_id) {language_id = lang_id;}
+		void set_language_id(const String_UTF8& lang_id) {language_id = lang_id;}
 		//! @see get_lamguage_id()
-		const std::string get_language_id() const {return language_id;}
+		const String_UTF8& get_language_id() const {return language_id;}
 		//! @return true if language id was set
 		bool has_language_id() {return !language_id.empty();}
 
 		//! clears all information and copies all new information from file until a problem occurs
-		//! @returns true if no problems occurred
+		//! FORMAT(UTF-8):<p>UTF8<p>LANG_ID<p>id1, string1;<p>id2, string2;<p>...
+		//! @return true if no problems occurred
 		bool copy_from_file(const std::string& file_path);
 	};
 
 	class Localizer {
 		//! the current (global) localizer
-		static Localizer* current;
+		static Localizer current;
 
 		//! stores all data
 		std::map<std::string, Localized_String_Map> all_languages;
@@ -74,12 +77,8 @@ namespace cdx {
 		Localized_String_Map* fallback_language;
 
 	public:
-		//! use this method to (re)set the global localizer
-		//! @see get()
-		static void set(Localizer* l) {current = l;}
-		//! @return pointer to the current global localizer
-		//! @see set()
-		static Localizer* get() {return current;}
+		//! @return reference to localizer
+		static Localizer& get() {return current;}
 
 		//! adds the given strings to a language via a copy
 		//! @see has_language(), remove_language()
@@ -107,24 +106,22 @@ namespace cdx {
 
 		//! @return localized string from default language (or fallback language if incomplete)
 		//! @see set_default_language(), set_fallback_language()
-		const char* get_str_non_static(const int n) const;
+		const String_UTF8& get_str(const int n) const;
 
-		//! this function is a short cut to improve readability & performance
-		//! @return localized string from global localizer and default language
-		//! (or fallback language if incomplete)
-		static const char* get_str(const int n);
-
+		//! restores the initial state
+		void clear();
 	};
 
 }
 
-//! FORMAT:\nLANG_ID\nid1, string1;\nid2, string2;\n...
+// TODO: IMPLEMENT UTF8 FORMAT CHECKS FOR INPUT!
+//! FORMAT(UTF-8):<p>UTF8<p>LANG_ID<p>id1, string1;<p>id2, string2;<p>...
 std::istream& operator>>(std::istream& is, cdx::Localized_String_Map& ls);
-//! FORMAT:\nLANG_ID\nid1, string1;\nid2, string2;\n...
+//! FORMAT(UTF-8):<p>UTF8<p>LANG_ID<p>id1, string1;<p>id2, string2;<p>...
 std::ostream& operator<<(std::ostream& os, cdx::Localized_String_Map&  ls);
-//! FORMAT:\nid, string
+//! FORMAT(UTF-8):<p>UTF8<p>id, string
 std::istream& operator>>(std::istream& is, std::pair<int, std::string>& p);
-//! FORMAT:\nid, string
+//! FORMAT(UTF-8):<p>UTF8<p>id, string
 std::ostream& operator<<(std::ostream& os, std::pair<int, std::string>& p);
 
 #endif /* defined(__Codex__locale_string__) */
