@@ -58,6 +58,7 @@
 		B43ABE231A5703DC00B3FBFA /* Codex_Engine_Mac_Tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Codex_Engine_Mac_Tests; sourceTree = BUILT_PRODUCTS_DIR; };
 		B442D30D1A5EBA0E00E3A874 /* string_utf8.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = string_utf8.cpp; sourceTree = "<group>"; };
 		B442D30E1A5EBA0E00E3A874 /* string_utf8.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = string_utf8.h; sourceTree = "<group>"; };
+		B442D3101A5EBC1200E3A874 /* res_test */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res_test; sourceTree = "<group>"; };
 		B45ADB361A2F59CC00390C6E /* measure.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = measure.h; sourceTree = "<group>"; };
 		B461292B1A2E6277007F66A3 /* window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = window.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		B46129301A2E6414007F66A3 /* CDXWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CDXWindow.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -189,6 +190,7 @@
 				B43D9A011A49C8F7007A14DA /* src_mac */,
 				B41CC02A1A57057400A16B0D /* tests */,
 				B49D6DCF1A531BDE0015C436 /* res */,
+				B442D3101A5EBC1200E3A874 /* res_test */,
 			);
 			name = Engine;
 			path = engine;
