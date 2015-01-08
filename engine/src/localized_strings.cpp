@@ -15,7 +15,7 @@ const String_UTF8& Localized_String_Map::NO_STRING_FOR_ID_MSG
 
 void Localized_String_Map::add_str(const int n, const String_UTF8& str)
 {
-	std::pair<int, std::string> isp = {n, str};
+	std::pair<int, String_UTF8> isp = {n, str};
 	add_str(isp);
 }
 
@@ -88,7 +88,7 @@ void Localizer::add_language(cdx::Localized_String_Map&& lsm)
 	all_languages[lsm.get_language_id()] = std::move(lsm);
 }
 
-bool Localizer::remove_language(const std::string lang_id)
+bool Localizer::remove_language(const String_UTF8 lang_id)
 {
 	auto it = all_languages.find(lang_id);
 	if (it != all_languages.end()) // language defined?
@@ -104,7 +104,7 @@ bool Localizer::remove_language(const std::string lang_id)
 	return false;
 }
 
-Localized_String_Map* Localizer::get_language(const std::string& lang_id)
+Localized_String_Map* Localizer::get_language(const String_UTF8& lang_id)
 {
 	auto it = all_languages.find(lang_id);
 	if (it != all_languages.end())
@@ -116,13 +116,13 @@ Localized_String_Map* Localizer::get_language(const std::string& lang_id)
 	return nullptr;
 }
 
-bool Localizer::has_language(const std::string& lang_id) const
+bool Localizer::has_language(const String_UTF8& lang_id) const
 {
 	auto it = all_languages.find(lang_id);
 	return it != all_languages.end();
 }
 
-bool Localizer::set_default_language(const std::string &lang_id)
+bool Localizer::set_default_language(const String_UTF8& lang_id)
 {
 	for (auto& it : all_languages)
 	{
@@ -135,7 +135,7 @@ bool Localizer::set_default_language(const std::string &lang_id)
 	return false;
 }
 
-bool Localizer::set_fallback_language(const std::string &lang_id)
+bool Localizer::set_fallback_language(const String_UTF8& lang_id)
 {
 	for (auto& it : all_languages)
 	{
@@ -193,10 +193,10 @@ std::istream& operator>>(std::istream& is, cdx::Localized_String_Map& ls)
 	{
 		LOG_NORMAL("Found missing format signature for localization file (expected 'UTF8')!");
 	}
-	ls.set_language_id(s);
+	ls.set_language_id({s});
 
 	// id string list:
-	std::pair<int, std::string> p;
+	std::pair<int, String_UTF8> p;
 	char c;
 
 	do
@@ -225,7 +225,7 @@ std::ostream& operator<<(std::ostream& os, cdx::Localized_String_Map& ls)
 	os << ls.get_language_id() << std::endl;
 
 	// id string list:
-	std::pair<int, std::string> p;
+	std::pair<int, String_UTF8> p;
 	for (auto it : ls.get_all())
 	{
 		p.first = it.first;
@@ -237,9 +237,9 @@ std::ostream& operator<<(std::ostream& os, cdx::Localized_String_Map& ls)
 	return os;
 }
 
-std::istream& operator>>(std::istream& is, std::pair<int, std::string>& p)
+std::istream& operator>>(std::istream& is, std::pair<int, String_UTF8>& p)
 {
-	std::pair<int, std::string> tmp;
+	std::pair<int, String_UTF8> tmp;
 
 	char c;
 	is >> tmp.first;
@@ -268,7 +268,7 @@ std::istream& operator>>(std::istream& is, std::pair<int, std::string>& p)
 	return is;
 }
 
-std::ostream& operator<<(std::ostream& os, std::pair<int, std::string>& p)
+std::ostream& operator<<(std::ostream& os, std::pair<int,String_UTF8>& p)
 {
 	os << p.first << ", \"" << p.second << "\"";
 

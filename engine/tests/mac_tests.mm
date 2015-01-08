@@ -10,8 +10,37 @@
 
 using namespace cdx;
 
+// NEVER! change these classes & functions:
+
+// print as binary
+/*
+static_assert(sizeof(unsigned long) == 8, "unsigned long must be 8 bytes long");
+struct Binary_Word {
+	unsigned long value;
+	Binary_Word() { }
+	Binary_Word(unsigned long l) : value(l) { }
+};
+std::ostream& operator<<(std::ostream& os, Binary_Word& bl);
+
+static_assert(sizeof(unsigned char) == 1, "unsigned char must be 1 byte long");
+struct Binary_Byte {
+	unsigned char value;
+	Binary_Byte() { }
+	Binary_Byte(unsigned long l) : value(l) { }
+};
+std::ostream& operator<<(std::ostream& os, Binary_Byte& bb);
+*/
+
 int main(int argc, const char * argv[])
 {
+	// test utilities
+	/*
+	Binary_Word bl = 0b1010101010101010101010101010101010101010101010101010101010101010;
+	std::cout << bl << std::endl;
+	Binary_Byte bb = 0b10101010;
+	std::cout << bb << std::endl;
+	 */
+
 	// logging
 	/*
 	 LOG_DEBUG("hello");
@@ -106,6 +135,103 @@ int main(int argc, const char * argv[])
 	<< "ms." << std::endl;
 	 */
 
+	// localization 3 (UTF-8 strings)
+
+	/*
+	// unicode codepoint-to-character convertion
+	String_UTF8 s;
+	Binary_Byte bb;
+
+	// critical
+	long ls[] = {0x0, 0x7F, 0x80, 0x7FF, 0x800, 0xFFFF, 0x100000, 0x1FFFFF, 0x200000};
+	// random
+	//long ls[] = {0x78, 0x6F, 0x125, 0x633, 0x18F3, 0x7F85, 0x1B0C36, 0x1F90CF, 0x25A463};
+
+	for (long l : ls)
+	{
+		s.add_utf8_char(l);
+		std::cout <<"U+" <<  std::hex << l << " (" << std::dec << s.length() << ") : ";
+		for (char c : s)
+		{
+			bb.value = c;
+			std::cout << bb << "  ";
+		}
+		std::cout << std::endl;
+		s.clear();
+	}
+	 */
+
+
+	/*
+	// length of bytes & writing all characters (can lag)
+	String_UTF8 s;
+	//std::ofstream log_file("log.txt");
+	//if (!log_file.good()) abort();
+
+	Binary_Byte bb;
+	// 1 byte
+	for (long l=0x00000; l < 0x200000; ++l)
+	{
+		s.clear();
+		s.add_utf8_char(l);
+
+		bool error;
+		switch (s.length()) {
+			default : error = true; break;
+			case 1: if (l >= 0x000000 && l <= 0x00007F) error = false; break;
+			case 2: if (l >= 0x000080 && l <= 0x0007FF) error = false; break;
+			case 3: if (l >= 0x000800 && l <= 0x00FFFF) error = false; break;
+			case 4: if (l >= 0x010000 && l <= 0x1FFFFF) error = false; break;
+		}
+
+		if (error) {
+			std::cout <<"LENGTH ERROR @ U+" <<  std::hex << l <<
+				" (" << std::dec << s.length() << ") : ";
+			for (char c : s) {
+				bb.value = c;
+				std::cout << bb << "  ";
+			}
+			std::cout << std::endl;
+
+			// set breakpoint here:
+			s.add_utf8_char(l);
+		}
+
+		std::cout << s;
+		//log_file << s;
+
+	}
+
+	//log_file.close();
+	 */
+
+	/*
+	// length only
+	constexpr long reps = 0xFF;
+	std::cout << s.calculate_length_utf8() << std::endl;
+	for (long l=0; l<reps; ++l)
+	{
+		s += char (l % 255);
+		std::cout << std::hex << l << " : " << std::dec << s.calculate_length_utf8() << std::endl;
+
+	}
+	*/
+
+	/*
+	// format correctness
+	String_UTF8 s;
+		// U+000000 -> U+1FFFFF
+	for (long l=0x000000; l<0x1FFFFF; ++l)
+	{
+		s.clear();
+		s.add_utf8_char(l);
+		if(!s.good())
+		{
+			std::cout << "error @ c= 0x" << std::hex << l <<  " : "
+				<< s.good() << " (should be = " << false << ")" << std::endl;
+		}
+	}
+	 */
 
 	// full application
 	/*
@@ -126,3 +252,33 @@ int main(int argc, const char * argv[])
 	 Application::get()->destroy();
 	 */
 }
+
+/*
+std::ostream& operator<<(std::ostream& os, Binary_Word& bl)
+{
+	constexpr int bits = sizeof(bl) * 8;
+
+	int i = bits - 1;
+	os << "0b";
+	for ( ; i > -1; --i)
+	{
+		os << bool(bl.value & (1L << i));
+	}
+
+	return os;
+}
+
+std::ostream& operator<<(std::ostream& os, Binary_Byte& bb)
+{
+	constexpr int bits = sizeof(bb) * 8;
+
+	int i = bits - 1;
+	os << "0b";
+	for ( ; i > -1; --i)
+	{
+		os << bool(bb.value & (1L << i));
+	}
+
+	return os;
+}
+ */

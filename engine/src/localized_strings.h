@@ -12,20 +12,19 @@
 #include "log.h"
 #include <fstream>
 #include <map>
-#include <string>
+#include "string_utf8.h"
 #include "loc_string_list.h"
 
 namespace cdx {
 
 	// TODO: IMPLEMENT COMPLETE 'String_UTF8' CLASS & FORMAT CHECKS!
-	typedef std::string String_UTF8;
 
 	class Localized_String_Map {
 
 		//! maps all ids to the correponding string for the givien language
 		std::map<int, String_UTF8> strings;
 		//! contains the language identifier
-		std::string language_id;
+		String_UTF8 language_id;
 	public:
 		// used as constant: allowes internal lazy comperison via c-string pointer (not used)
 		//! unique constant to indicate a missed string
@@ -66,7 +65,7 @@ namespace cdx {
 		static Localizer current;
 
 		//! stores all data
-		std::map<std::string, Localized_String_Map> all_languages;
+		std::map<String_UTF8, Localized_String_Map> all_languages;
 
 		//! used as default for all look-ups
 		//! should be understandable for the user
@@ -87,22 +86,22 @@ namespace cdx {
 		//! @see has_language(), remove_language()
 		void add_language(Localized_String_Map&& lsm);
 		//! @return true if language was found and removed
-		bool remove_language(const std::string lang_id);
+		bool remove_language(const String_UTF8 lang_id);
 		//! @return a pointer to the associated string set
 		//! (or nullptr if the language id is unknown)
-		Localized_String_Map* get_language(const std::string& lang_id);
+		Localized_String_Map* get_language(const String_UTF8& lang_id);
 		//! @return true if language is known
 		//! @see add_language(), remove_language()
-		bool has_language(const std::string& lang_id) const;
+		bool has_language(const String_UTF8& lang_id) const;
 
 		//! sets the default language
 		//! @return true if langague is known
 		//! @see set_fallback_language()
-		bool set_default_language(const std::string& lang_id);
+		bool set_default_language(const String_UTF8& lang_id);
 		//! sets the fallback language which is looked up if the default language is incomplete
 		//! @return true if langague is known
 		//! @see set_default_language
-		bool set_fallback_language(const std::string& lang_id);
+		bool set_fallback_language(const String_UTF8& lang_id);
 
 		//! @return localized string from default language (or fallback language if incomplete)
 		//! @see set_default_language(), set_fallback_language()
@@ -120,8 +119,8 @@ std::istream& operator>>(std::istream& is, cdx::Localized_String_Map& ls);
 //! FORMAT(UTF-8):<p>UTF8<p>LANG_ID<p>id1, string1;<p>id2, string2;<p>...
 std::ostream& operator<<(std::ostream& os, cdx::Localized_String_Map&  ls);
 //! FORMAT(UTF-8):<p>UTF8<p>id, string
-std::istream& operator>>(std::istream& is, std::pair<int, std::string>& p);
+std::istream& operator>>(std::istream& is, std::pair<int, cdx::String_UTF8>& p);
 //! FORMAT(UTF-8):<p>UTF8<p>id, string
-std::ostream& operator<<(std::ostream& os, std::pair<int, std::string>& p);
+std::ostream& operator<<(std::ostream& os, std::pair<int, cdx::String_UTF8>& p);
 
 #endif /* defined(__Codex__locale_string__) */
