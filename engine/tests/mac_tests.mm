@@ -136,7 +136,6 @@ int main(int argc, const char * argv[])
 	 */
 
 	// localization 3 (UTF-8 strings)
-
 	/*
 	// unicode codepoint-to-character convertion
 	String_UTF8 s;

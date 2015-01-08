@@ -34,10 +34,10 @@ namespace cdx {
 		//! Use this method to calculate the amount of (unicode) code points in a string.<p>
 		//! Warning: The (UTF-8)length is not stored and hence must be recalculated ervery time.
 		//! @return amount of (unicode) code points
-		base::size_type calculate_utf8_length();
+		base::size_type calculate_utf8_length() const;
 		//! @return true if string is in correct UTF-8 format
 		//! @see add_utf8_char()
-		bool good();
+		bool good() const;
 	};
 
 }

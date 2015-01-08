@@ -28,6 +28,14 @@ void Localized_String_Map::add_str(std::pair<int, String_UTF8>& isp)
 				   language_id.c_str(), isp.first);
 	}
 
+#ifdef DEBUG
+	if(!isp.second.good())
+	{
+		LOG_DEBUG("Found string with bad UTF-8 format for language=\"%s\" and id=%i: \n\t\"%s\"",
+				  language_id.c_str(), isp.first, isp.second.c_str());
+	}
+#endif
+
 	strings[isp.first] = isp.second;
 }
 
@@ -55,6 +63,19 @@ bool Localized_String_Map::remove_str(const int n)
 	return false;
 }
 
+void Localized_String_Map::set_language_id(const cdx::String_UTF8& lang_id)
+{
+#ifdef DEBUG
+	if (!lang_id.good())
+	{
+		LOG_DEBUG("Found string with bad format UTF-8 format for language=\"%s\".",
+				  lang_id.c_str());
+	}
+#endif
+
+	language_id = lang_id;
+}
+
 bool Localized_String_Map::copy_from_file(const std::string &file_path)
 {
 	bool good = false;
@@ -69,7 +90,8 @@ bool Localized_String_Map::copy_from_file(const std::string &file_path)
 	}
 	else
 	{
-		LOG_NORMAL("Uninitialized localized strings set! Could not open file: %s", file_path.c_str());
+		LOG_NORMAL("Uninitialized localized strings set! Could not open file: %s",
+				   file_path.c_str());
 	}
 	ifs.close();
 
@@ -112,7 +134,8 @@ Localized_String_Map* Localizer::get_language(const String_UTF8& lang_id)
 		// language defined
 		return &all_languages[lang_id];
 	}
-	LOG_NORMAL("Language identifier unknown! Nullptr is returned for language=\"%s\".", lang_id.c_str());
+	LOG_NORMAL("Language identifier unknown! Nullptr is returned for language=\"%s\".",
+			   lang_id.c_str());
 	return nullptr;
 }
 
@@ -169,7 +192,7 @@ const String_UTF8& Localizer::get_str(const int n) const
 		}
 	}
 
-	LOG_NORMAL("No localized string with id=%i for default and fallback language found!", n);
+	LOG_NORMAL("Found no localized string with id=%i for default and fallback language!", n);
 	return Localized_String_Map::NO_STRING_FOR_ID_MSG;
 }
 

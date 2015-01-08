@@ -17,10 +17,7 @@
 
 namespace cdx {
 
-	// TODO: IMPLEMENT COMPLETE 'String_UTF8' CLASS & FORMAT CHECKS!
-
 	class Localized_String_Map {
-
 		//! maps all ids to the correponding string for the givien language
 		std::map<int, String_UTF8> strings;
 		//! contains the language identifier
@@ -48,7 +45,7 @@ namespace cdx {
 
 		//! sets the language identifier (only once allowed)
 		//! @see get_language_id()
-		void set_language_id(const String_UTF8& lang_id) {language_id = lang_id;}
+		void set_language_id(const String_UTF8& lang_id);
 		//! @see get_lamguage_id()
 		const String_UTF8& get_language_id() const {return language_id;}
 		//! @return true if language id was set
@@ -106,6 +103,8 @@ namespace cdx {
 		//! @return localized string from default language (or fallback language if incomplete)
 		//! @see set_default_language(), set_fallback_language()
 		const String_UTF8& get_str(const int n) const;
+		//! @return all languages including their localized strings in a map
+		const std::map<String_UTF8, Localized_String_Map>& get_all() const {return all_languages;}
 
 		//! restores the initial state
 		void clear();
@@ -113,7 +112,6 @@ namespace cdx {
 
 }
 
-// TODO: IMPLEMENT UTF8 FORMAT CHECKS FOR INPUT!
 //! FORMAT(UTF-8):<p>UTF8<p>LANG_ID<p>id1, string1;<p>id2, string2;<p>...
 std::istream& operator>>(std::istream& is, cdx::Localized_String_Map& ls);
 //! FORMAT(UTF-8):<p>UTF8<p>LANG_ID<p>id1, string1;<p>id2, string2;<p>...
