@@ -11,6 +11,7 @@
 		B41CC02E1A5706ED00A16B0D /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4F7F7C019DEE90800302B5C /* AppKit.framework */; };
 		B41CC02F1A57072400A16B0D /* libCodex_Engine_Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B49D6DA81A5317610015C436 /* libCodex_Engine_Mac.a */; };
 		B43ABE2D1A5703FB00B3FBFA /* res in CopyFiles */ = {isa = PBXBuildFile; fileRef = B49D6DCF1A531BDE0015C436 /* res */; };
+		B442D30F1A5EBA1100E3A874 /* string_utf8.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B442D30D1A5EBA0E00E3A874 /* string_utf8.cpp */; };
 		B49D6DAC1A5317840015C436 /* application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B47910341A2E494C00B8A1F5 /* application.cpp */; };
 		B49D6DAD1A5317840015C436 /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B461292B1A2E6277007F66A3 /* window.cpp */; };
 		B49D6DAE1A5317840015C436 /* window_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B47910301A2E304200B8A1F5 /* window_manager.cpp */; };
@@ -55,6 +56,8 @@
 /* Begin PBXFileReference section */
 		B41CC02B1A57059800A16B0D /* mac_tests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = mac_tests.mm; sourceTree = "<group>"; };
 		B43ABE231A5703DC00B3FBFA /* Codex_Engine_Mac_Tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Codex_Engine_Mac_Tests; sourceTree = BUILT_PRODUCTS_DIR; };
+		B442D30D1A5EBA0E00E3A874 /* string_utf8.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = string_utf8.cpp; sourceTree = "<group>"; };
+		B442D30E1A5EBA0E00E3A874 /* string_utf8.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = string_utf8.h; sourceTree = "<group>"; };
 		B45ADB361A2F59CC00390C6E /* measure.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = measure.h; sourceTree = "<group>"; };
 		B461292B1A2E6277007F66A3 /* window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = window.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		B46129301A2E6414007F66A3 /* CDXWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CDXWindow.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -248,6 +251,8 @@
 				B49D6DC31A531AD20015C436 /* loc_string_list.h */,
 				B49D6DBD1A531A6D0015C436 /* localized_strings.h */,
 				B49D6DBC1A531A6D0015C436 /* localized_strings.cpp */,
+				B442D30E1A5EBA0E00E3A874 /* string_utf8.h */,
+				B442D30D1A5EBA0E00E3A874 /* string_utf8.cpp */,
 			);
 			name = localization;
 			sourceTree = "<group>";
@@ -396,6 +401,7 @@
 				B49D6DB11A5317840015C436 /* CDXApplicationDelegate.mm in Sources */,
 				B49D6DC91A531AE20015C436 /* log.cpp in Sources */,
 				B49D6DB21A5317840015C436 /* mac_window.mm in Sources */,
+				B442D30F1A5EBA1100E3A874 /* string_utf8.cpp in Sources */,
 				B49D6DB31A5317840015C436 /* CDXWindow.mm in Sources */,
 				B49D6DB41A5317840015C436 /* mac_window_manager.mm in Sources */,
 				B49D6DB51A5317840015C436 /* CDXWindowDelegate.mm in Sources */,
