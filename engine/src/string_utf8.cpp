@@ -62,7 +62,7 @@ String_UTF8& String_UTF8::add_utf8_char(unsigned long c)
 	return *this;
 }
 
-String_UTF8::base::size_type String_UTF8::calculate_utf8_length()
+String_UTF8::base::size_type String_UTF8::calculate_utf8_length() const
 {
 	// assert (good());
 
@@ -85,7 +85,7 @@ String_UTF8::base::size_type String_UTF8::calculate_utf8_length()
 	return len_utf8;
 }
 
-bool String_UTF8::good()
+bool String_UTF8::good() const
 {
 	int fbs = 0;
 	for (auto it=this->begin(), end=this->end(); it!=end; ++it)
