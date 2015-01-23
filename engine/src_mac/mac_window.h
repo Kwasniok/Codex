@@ -18,9 +18,11 @@ namespace cdx {
 
 	class Window_Mac : public Window {
 	private:
-		friend class Window_Manager_Mac;
 		CDXWindow* mac_win = nullptr;
 
+		// renewed from Window (see window.h)
+		friend class Window_Manager_Mac;
+		Window_Mac() { }
 	public:
 		virtual ~Window_Mac();
 

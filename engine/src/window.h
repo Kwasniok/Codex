@@ -14,9 +14,15 @@
 
 namespace cdx {
 
+	class Window_Manager;
+
 	//! general window interface
 	class Window {
-
+	protected:
+		// Window's constructor is private except for Window_Manager to prevent creations of windows
+		// outside of the window manager (must be renewed for every derived class!).
+		friend class Window_Manager;
+		Window() { }
 	public:
 		virtual ~Window() { };
 

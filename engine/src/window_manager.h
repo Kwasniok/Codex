@@ -30,13 +30,14 @@ namespace cdx {
 		virtual ~Window_Manager();
 
 		virtual void clear();
-
 		virtual Window* create_window(const cdx::Rect& bounds,
 									  std::string title,
 									  bool closable,
 									  bool resizable,
 									  bool borderless) = 0;
 		virtual void destroy_window(Window* win) = 0;
+
+		const std::vector<Window*> get_all() {return windows;}
 
 	protected:
 		void add_window_to_list(Window* win);
