@@ -178,12 +178,9 @@
 		B43D9A001A49C8C3007A14DA /* interfaces */ = {
 			isa = PBXGroup;
 			children = (
-				B47910351A2E494C00B8A1F5 /* application.h */,
-				B47910341A2E494C00B8A1F5 /* application.cpp */,
-				B47910221A2E29D000B8A1F5 /* window.h */,
-				B461292B1A2E6277007F66A3 /* window.cpp */,
-				B479102B1A2E2F1D00B8A1F5 /* window_manager.h */,
-				B47910301A2E304200B8A1F5 /* window_manager.cpp */,
+				B4AF07091A72B9700027444B /* application */,
+				B4AF070A1A72B9790027444B /* window */,
+				B4AF070B1A72B97F0027444B /* window manager */,
 			);
 			name = interfaces;
 			sourceTree = "<group>";
@@ -192,10 +189,8 @@
 			isa = PBXGroup;
 			children = (
 				B49D6DBB1A5318040015C436 /* mac_config.h */,
-				B457096B1A717628006F2E15 /* mac_root.mm */,
-				B47910331A2E493400B8A1F5 /* application */,
-				B47910321A2E492F00B8A1F5 /* window */,
-				B42D232C1A30BE260012BB06 /* window manager */,
+				B4AF070C1A72B9900027444B /* root */,
+				B4AF070D1A72B9980027444B /* interface implementations */,
 			);
 			path = src_mac;
 			sourceTree = "<group>";
@@ -230,9 +225,8 @@
 				B46129411A2E6A1A007F66A3 /* config.h */,
 				B41545551A62E984005A7CFD /* memory statistics */,
 				B49D6DCB1A531AE70015C436 /* logging */,
+				B4AF07081A72B94F0027444B /* root */,
 				B49D6DC21A531A740015C436 /* localization */,
-				B45709681A71703D006F2E15 /* root.h */,
-				B45709671A71703D006F2E15 /* root.cpp */,
 				B43D9A001A49C8C3007A14DA /* interfaces */,
 			);
 			path = src;
@@ -290,6 +284,60 @@
 				B49D6DC61A531AE20015C436 /* log.cpp */,
 			);
 			name = logging;
+			sourceTree = "<group>";
+		};
+		B4AF07081A72B94F0027444B /* root */ = {
+			isa = PBXGroup;
+			children = (
+				B45709681A71703D006F2E15 /* root.h */,
+				B45709671A71703D006F2E15 /* root.cpp */,
+			);
+			name = root;
+			sourceTree = "<group>";
+		};
+		B4AF07091A72B9700027444B /* application */ = {
+			isa = PBXGroup;
+			children = (
+				B47910351A2E494C00B8A1F5 /* application.h */,
+				B47910341A2E494C00B8A1F5 /* application.cpp */,
+			);
+			name = application;
+			sourceTree = "<group>";
+		};
+		B4AF070A1A72B9790027444B /* window */ = {
+			isa = PBXGroup;
+			children = (
+				B47910221A2E29D000B8A1F5 /* window.h */,
+				B461292B1A2E6277007F66A3 /* window.cpp */,
+			);
+			name = window;
+			sourceTree = "<group>";
+		};
+		B4AF070B1A72B97F0027444B /* window manager */ = {
+			isa = PBXGroup;
+			children = (
+				B479102B1A2E2F1D00B8A1F5 /* window_manager.h */,
+				B47910301A2E304200B8A1F5 /* window_manager.cpp */,
+			);
+			name = "window manager";
+			sourceTree = "<group>";
+		};
+		B4AF070C1A72B9900027444B /* root */ = {
+			isa = PBXGroup;
+			children = (
+				B457096B1A717628006F2E15 /* mac_root.mm */,
+			);
+			name = root;
+			sourceTree = "<group>";
+		};
+		B4AF070D1A72B9980027444B /* interface implementations */ = {
+			isa = PBXGroup;
+			children = (
+				B47910331A2E493400B8A1F5 /* application */,
+				B47910321A2E492F00B8A1F5 /* window */,
+				B42D232C1A30BE260012BB06 /* window manager */,
+			);
+			name = "interface implementations";
 			sourceTree = "<group>";
 		};
 		B4F7F7A819DEE81800302B5C /* util */ = {
