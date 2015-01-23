@@ -15,9 +15,14 @@
 
 // -- DEBUG --
 #ifdef DEBUG
-// GENERAL
+// MEMORY
+#define CDX_ENABLE_MEMORY_STATISTICS true
+#define CDX_MEM_STATS_PRINT_INFO false
+#define CDX_MEM_STATS_PRINT_UNTRACKED_INFO false
+// ROOT
+#define CDX_DEBUG_ROOT true
+// WINDOW MANAGER
 #define CDX_DEBUG_WINDOW_LIST true
-#define CDX_DEBUG_MEM_MANAGEMENT true
 
 #endif // ifdef(DEBUG)
 

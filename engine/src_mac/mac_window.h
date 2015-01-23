@@ -25,7 +25,6 @@ namespace cdx {
 		virtual ~Window_Mac();
 
 		virtual void close();
-
 		virtual bool is_valid();
 		virtual void set_visible(bool vis);
 		virtual bool is_visible();

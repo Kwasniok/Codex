@@ -233,23 +233,21 @@ int main(int argc, const char * argv[])
 	 */
 
 	// full application
-	/*
-	 Application::set(new Application_Mac());
-	 Application::get()->initialize();
+	{
+		Root root;
+		if (!root.initialize()) return EXIT_FAILURE;
 
-	 Window* win = Window_Manager::get()->create_window(util::Rect(200, 200, 200, 200),
-	 "Placeholder Title", true, true, false);
+		Window* win = Root::get_window_manager().create_window(cdx::Rect(200, 200, 200, 200),
+		"Placeholder Title", true, true, false);
+		win->set_visible(true);
 
-	 win->set_visible(true);
+		while (win->is_valid())
+		{
+			Root::get_application().wait_events();
+		}
 
-	 for (int i=0; win->is_valid(); ++i) {
-	 Application::get()->wait_events();
-	 }
-
-	 Window_Manager::get()->destroy_window(win);
-
-	 Application::get()->destroy();
-	 */
+		Root::get_window_manager().destroy_window(win);
+	} // end of scope --> calls root's destructor --> calls destruction routine of subsystems
 }
 
 /*

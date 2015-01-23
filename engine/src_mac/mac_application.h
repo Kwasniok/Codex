@@ -22,9 +22,8 @@ namespace cdx {
 		CDXApplicationDelegate* delegate = NULL;
 
 	public:
-
 		virtual bool initialize();
-		virtual void destroy();
+		virtual ~Application_Mac();
 
 		virtual void poll_events();
 		virtual void wait_events();

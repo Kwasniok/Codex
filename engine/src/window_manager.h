@@ -10,6 +10,7 @@
 #define __Codex__window_manager__
 
 #include "config.h"
+#include "memory_statistics.h"
 #include <vector>
 #include <string>
 #include <algorithm>
@@ -19,22 +20,16 @@
 
 namespace cdx {
 
-	class Application;
-	class Window;
-
 	//! general window manager interface
 	class Window_Manager {
 	protected:
-		static Window_Manager* win_manager;
 		std::vector<Window*> windows;
 
 	public:
+		virtual bool initialize() = 0;
 		virtual ~Window_Manager();
-		static Window_Manager* get() {return win_manager;}
-		static void set(Window_Manager* man) {win_manager = man;}
-		
-		virtual bool initialize();
-		virtual void destroy();
+
+		virtual void clear();
 
 		virtual Window* create_window(const cdx::Rect& bounds,
 									  std::string title,

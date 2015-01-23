@@ -9,5 +9,3 @@
 #include "window.h"
 
 using namespace cdx;
-
-Window::~Window() { }

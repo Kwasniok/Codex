@@ -10,6 +10,7 @@
 #define __Codex__window__
 
 #include "config.h"
+#include "memory_statistics.h"
 
 namespace cdx {
 
@@ -17,11 +18,10 @@ namespace cdx {
 	class Window {
 
 	public:
-		virtual ~Window();
-
-		virtual void close() = 0;
+		virtual ~Window() { };
 
 		virtual bool is_valid() = 0;
+		virtual void close() = 0;
 		virtual void set_visible(bool vis) = 0;
 		virtual bool is_visible() = 0;
 	};

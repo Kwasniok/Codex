@@ -12,15 +12,13 @@ using namespace cdx;
 
 bool Application_Mac::initialize()
 {
-	if (!Application::initialize())
-		return false;
-
 	// create autorelease pool
 	autorelease_pool = [[NSAutoreleasePool alloc] init];
 
 	// create and initialize application
 	[CDXApplication sharedApplication];
 
+	// check if application was created
 	if(!NSApp)
 	{
 		return false;
@@ -33,14 +31,10 @@ bool Application_Mac::initialize()
 	// start application
 	[NSApp finishLaunching];
 
-	Window_Manager::set(new Window_Manager_Mac()); // NO mem leak due to Application::destroy()!
-	Window_Manager::get()->initialize();
-
 	return true;
-
 }
 
-void Application_Mac::destroy()
+Application_Mac::~Application_Mac()
 {
 	// destroy autorelease pool, releases all autorelease instances
 	[autorelease_pool release];

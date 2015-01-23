@@ -10,19 +10,12 @@
 
 using namespace cdx;
 
-Window_Manager* Window_Manager::win_manager = nullptr;
-
 Window_Manager::~Window_Manager()
 {
-	
+	clear();
 }
 
-bool Window_Manager::initialize()
-{
-	return true;
-}
-
-void Window_Manager::destroy()
+void Window_Manager::clear()
 {
 	for (Window* win : windows) {
 		destroy_window(win);
@@ -37,13 +30,13 @@ void Window_Manager::add_window_to_list(cdx::Window *win)
 	{
 		windows.push_back(win);
 #if CDX_DEBUG_WINDOW_LIST
-		LOG_DEBUG("Added to window list:     %p", win);
+		LOG_DEBUG("[WinMan] added to window list:     %p", win);
 #endif
 	}
 	else
 	{
 #if CDX_DEBUG_WINDOW_LIST
-		LOG_DEBUG("Double entry denied:      %p", win);
+		LOG_DEBUG("[WinMan] double entry denied:      %p", win);
 #endif
 	}
 }
@@ -55,7 +48,7 @@ void Window_Manager::remove_window_from_list(cdx::Window *win)
 	{
 		windows.erase(it);
 #if CDX_DEBUG_WINDOW_LIST
-		LOG_DEBUG("Removed from window list: <%p>", win);
+		LOG_DEBUG("[WinMan] removed from window list: %p", win);
 #endif
 	}
 }

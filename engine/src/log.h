@@ -14,7 +14,7 @@
 #include <string>
 
 // -- MACROS --
-// Synopsis:
+// synopsis:
 // LOG_NORMAL(const char* format, ...)
 // LOG_NORMAL_FORCE_DETAILED(const char* format, ...)
 // LOG_DEBUG(const char* format, ...)
@@ -67,14 +67,15 @@ namespace cdx {
 	};
 }
 
-// -- MACROS (CONTINUED)
+// -- MACROS --
+// definitions:
 
 // loggging type & message only
 #define L_OG_SHORT(type, format, ...) cdx::Log::get().log(type ": " format, ##__VA_ARGS__)
 // + file & line
 #define L_OG_DETAILED(type, format, ...) cdx::Log::get().log(type " (%s l.%i):\n\t" format, __FILE__, __LINE__, ##__VA_ARGS__)
 
-// ENABLE_DETAILED_LOG: make detailed default
+// ENABLE_DETAILED_LOG: makes DETAILED default
 #if ENABLE_DETAILED_LOG
 #define L_OG(type, format, ...) L_OG_DETAILED(type, format, ##__VA_ARGS__)
 #else
@@ -87,8 +88,8 @@ namespace cdx {
 
 // DEBUG & DEBUG_FORCE_DETAILED mode
 #if ENABLE_DEBUG_LOG
-#define LOG_DEBUG(format, ...) L_OG("Debug", format, ##__VA_ARGS__)
-#define LOG_DEBUG_FORCE_DETAILED(format, ...) L_OG_DETAILED("Debug", format, ##__VA_ARGS__)
+#define LOG_DEBUG(format, ...) L_OG("Debug ", format, ##__VA_ARGS__)
+#define LOG_DEBUG_FORCE_DETAILED(format, ...) L_OG_DETAILED("Debug ", format, ##__VA_ARGS__)
 #else
 #define LOG_DEBUG(format, ...)
 #define LOG_DEBUG_FORCE_DETAILED(format, ...)

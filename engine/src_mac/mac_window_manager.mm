@@ -10,16 +10,8 @@
 
 using namespace cdx;
 
-Window_Manager_Mac::~Window_Manager_Mac()
-{
-	destroy();
-}
-
 bool Window_Manager_Mac::initialize()
 {
-	if(!Window_Manager::initialize())
-		return false;
-
 	if (!Window_Manager_Mac::delegate) {
 		delegate = [[CDXWindowDelegate alloc] init];
 	}
@@ -27,10 +19,8 @@ bool Window_Manager_Mac::initialize()
 	return delegate != NULL;
 }
 
-void Window_Manager_Mac::destroy()
+Window_Manager_Mac::~Window_Manager_Mac()
 {
-	Window_Manager::destroy();
-
 	delegate = NULL;
 }
 
@@ -40,7 +30,7 @@ Window* Window_Manager_Mac::create_window(const cdx::Rect& bounds,
 										  bool resizable,
 										  bool borderless)
 {
-	Window_Mac* win = new Window_Mac();
+	Window_Mac* win = NEW Window_Mac();
 
 	// parameters
 	NSRect frame = NSMakeRect(bounds.x, bounds.y, bounds.width, bounds.height);
@@ -90,8 +80,6 @@ void Window_Manager_Mac::destroy_window(Window *win)
 	if (!win) return;
 
 	win->close();
-
 	remove_window_from_list(win);
-
 	delete win;
 }

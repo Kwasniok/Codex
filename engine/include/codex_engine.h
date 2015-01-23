@@ -10,6 +10,7 @@
 #define Codex_virtualApplicationLayer_h
 
 #include "../src/log.h"
+#include "../src/memory_statistics.h"
 #include "../src/localized_strings.h"
 #include "../src/application.h"
 #include "../src/window_manager.h"

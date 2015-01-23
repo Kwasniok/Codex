@@ -16,14 +16,12 @@
 namespace cdx {
 
 	class Window_Manager_Mac : public Window_Manager {
-		CDXWindowDelegate* delegate;
+		CDXWindowDelegate* delegate = NULL;
 
 	public:
-		virtual ~Window_Manager_Mac();
-
 		virtual bool initialize();
-		virtual void destroy();
-
+		virtual ~Window_Manager_Mac();
+		
 		virtual Window* create_window(const cdx::Rect& bounds,
 									  const std::string title,
 									  bool closable,
