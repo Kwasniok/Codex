@@ -233,6 +233,7 @@ int main(int argc, const char * argv[])
 	 */
 
 	// full application
+	/*
 	{
 		Root root;
 		if (!root.initialize()) return EXIT_FAILURE;
@@ -248,6 +249,7 @@ int main(int argc, const char * argv[])
 
 		Root::get_window_manager().destroy_window(win);
 	} // end of scope --> calls root's destructor --> calls destruction routine of subsystems
+	 */
 }
 
 /*
