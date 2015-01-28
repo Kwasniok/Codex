@@ -12,6 +12,7 @@
 #include "../src/log.h"
 #include "../src/memory_statistics.h"
 #include "../src/localized_strings.h"
+#include "../src/configuration.h"
 #include "../src/application.h"
 #include "../src/window_manager.h"
 #include "../src/window.h"

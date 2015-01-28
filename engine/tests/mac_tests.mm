@@ -232,6 +232,31 @@ int main(int argc, const char * argv[])
 	}
 	 */
 
+	// configuration
+	/*
+	Configuration c;
+
+	c.set_bool({"sf"}, false);
+	c.set_long({"sf"}, 1L);
+	c.set_double({"sf"}, 2.0);
+	c.set_string_utf8({"sf"}, {"three"});
+
+	constexpr const char* file_path_in = "res/config/test_in.config.txt";
+	constexpr const char* file_path_out = "res/config/test_out.config.txt";
+	//std::ofstream ofs (file_path);
+	//ofs << c << std::endl;
+
+
+	Configuration c2;
+	std::ifstream ifs (file_path_in);
+	if(ifs.good())
+	{
+		ifs >> c2;
+	}
+
+	std::cout << c2 << std::endl;
+	 */
+
 	// full application
 	/*
 	{
