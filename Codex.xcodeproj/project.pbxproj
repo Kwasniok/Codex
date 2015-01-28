@@ -104,6 +104,7 @@
 		B49D6DC61A531AE20015C436 /* log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = log.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		B49D6DC71A531AE20015C436 /* log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = log.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B49D6DCF1A531BDE0015C436 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
+		B4D8B3CC1A73E289000D0CC9 /* io_pair.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = io_pair.h; sourceTree = "<group>"; };
 		B4F7F79919DEE81800302B5C /* info.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = info.txt; sourceTree = "<group>"; };
 		B4F7F7A919DEE81800302B5C /* rect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = rect.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B4F7F7C019DEE90800302B5C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -347,6 +348,7 @@
 				B47B0A751A4B14700019C9AD /* assertion.h */,
 				B45ADB361A2F59CC00390C6E /* measure.h */,
 				B4F7F7A919DEE81800302B5C /* rect.h */,
+				B4D8B3CC1A73E289000D0CC9 /* io_pair.h */,
 			);
 			path = util;
 			sourceTree = "<group>";
