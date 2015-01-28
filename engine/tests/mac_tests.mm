@@ -232,7 +232,6 @@ int main(int argc, const char * argv[])
 	}
 	 */
 
-	// configuration
 	/*
 	Configuration c;
 

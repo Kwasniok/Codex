@@ -109,6 +109,10 @@ std::ostream& operator<<(std::ostream& os, Configuration& config)
 	{
 		os << "double" << ':' << p.first << '=' << p.second << ';' << std::endl;
 	}
+	for (auto& p : config.get_all_string_utf8_values())
+	{
+		os << "string_utf8" << ':' << p.first << '=' << p.second << ';' << std::endl;
+	}
 
 	return os;
 }
@@ -130,12 +134,22 @@ std::istream& operator>>(std::istream& is, Configuration& config)
 		if (line.length() == 0) continue;
 		if (line[0] == '#') continue;
 
-		if (line_stream >> std::ws &&
-			std::getline(line_stream, type, ':') &&
+		line_stream >> std::ws;
+		if (std::getline(line_stream, type, ':') &&
 			std::getline(line_stream, key, '=') &&
 			std::getline(line_stream, value, ';')
 			)
 		{
+			line_stream >> std::ws;
+
+			if (!line_stream.eof())
+			{
+				LOG_NORMAL("[Config] Could not add value of type '%s' and with name '%s' "
+						   "from instream because of an unexpected character after ';'.",
+						   type.c_str(), key.c_str());
+				continue;
+			}
+
 			if (!Configuration::is_valid_key(key))
 			{
 				is.setf(std::ios_base::failbit); // parse error
@@ -186,6 +200,11 @@ std::istream& operator>>(std::istream& is, Configuration& config)
 							   "from instream because '%s' is not a valid value of that type.",
 							   type.c_str(), key.c_str(), value.c_str());
 				}
+				continue;
+			}
+			if (type == "string_utf8")
+			{
+				tmp.set_string_utf8(key, {value});
 				continue;
 			}
 		}
