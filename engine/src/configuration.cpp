@@ -90,6 +90,30 @@ String_UTF8 Configuration::get_string_utf8(const std::string& key)
 	return val_string_utf8[key];
 }
 
+bool Configuration::copy_from_file(const std::string &file_path)
+{
+	bool good = false;
+	std::ifstream ifs (file_path);
+	if (ifs.good())
+	{
+		val_bool.clear();
+		val_long.clear();
+		val_double.clear();
+		val_string_utf8.clear();
+
+		ifs >> *this;
+		good = true;
+	}
+	else
+	{
+		LOG_NORMAL("[Config] Uninitialized configuration! Could not open file: %s",
+				   file_path.c_str());
+	}
+	ifs.close();
+
+	return good;
+}
+
 std::ostream& operator<<(std::ostream& os, Configuration& config)
 {
 	os << "UTF8" << std::endl;

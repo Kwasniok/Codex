@@ -11,6 +11,7 @@
 
 #include "config.h"
 #include <iostream>
+#include <fstream>
 #include <sstream>
 #include <map>
 #include "io_pair.h"
@@ -20,7 +21,11 @@
 
 namespace cdx {
 
-	class Configuration {
+	class Configuration { // TODO: add static configuration options!?
+		// static configurations
+		// e.g. int default_window_size; ...
+
+		// dynamic configurations
 		std::map<std::string, bool> val_bool;
 		std::map<std::string, long> val_long;
 		std::map<std::string, double> val_double;
@@ -49,6 +54,8 @@ namespace cdx {
 		const std::map<std::string, long>& get_all_long_values() {return val_long;}
 		const std::map<std::string, double>& get_all_double_values() {return val_double;}
 		const std::map<std::string, String_UTF8>& get_all_string_utf8_values() {return val_string_utf8;}
+
+		bool copy_from_file(const std::string& file_path);
 	};
 
 }

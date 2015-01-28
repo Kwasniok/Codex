@@ -21,9 +21,20 @@ bool Root::initialize()
 	LOG_NORMAL("[ROOT] starting initialization ...");
 #endif
 
+	if(!configuration.copy_from_file({"res/config/default.config.txt"}))
+	{
+		LOG_NORMAL("[ROOT] could not load configuration");
+		can_initialize = true;
+		return false;
+	}
+#if CDX_DEBUG_ROOT
+	LOG_DEBUG("[ROOT] loaded configuration");
+#endif
+
 	Application_Mac* app = NEW Application_Mac;
 	if (!app->initialize())
 	{
+		LOG_NORMAL("[ROOT] could not initialize application");
 		delete app;
 		can_initialize = true;
 		return false;
@@ -36,6 +47,7 @@ bool Root::initialize()
 	Window_Manager_Mac* win_man = NEW Window_Manager_Mac;
 	if(!win_man->initialize())
 	{
+		LOG_NORMAL("[ROOT] could not initialize window manager");
 		delete app;
 		delete win_man;
 		can_initialize = true;

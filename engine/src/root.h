@@ -10,7 +10,10 @@
 #define __Codex__root__
 
 #include "config.h"
+#include <fstream>
+#include <string>
 #include "log.h"
+#include "configuration.h"
 
 namespace cdx {
 
@@ -22,6 +25,9 @@ namespace cdx {
 	//! initialized instance is destructed (e.g. goes out of scope).
 	class Root {
 		static bool can_initialize; // simple mutex (NOT thread-save!)
+		static Configuration configuration;
+
+		// pointer to sub systems
 		static Application* application;
 		static Window_Manager* window_manager;
 

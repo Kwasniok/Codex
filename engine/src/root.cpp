@@ -11,5 +11,6 @@
 using namespace cdx;
 
 bool Root::can_initialize = true;
+Configuration Root::configuration;
 Application* Root::application = nullptr;
 Window_Manager* Root::window_manager = nullptr;

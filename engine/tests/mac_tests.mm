@@ -245,13 +245,8 @@ int main(int argc, const char * argv[])
 	std::ofstream ofs (file_path_out);
 	ofs << c << std::endl;
 
-
 	Configuration c2;
-	std::ifstream ifs (file_path_in);
-	if(ifs.good())
-	{
-		ifs >> c2;
-	}
+	c2.copy_from_file({file_path_in});
 
 	std::cout << c2 << std::endl;
 	 */
