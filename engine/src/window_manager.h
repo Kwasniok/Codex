@@ -12,7 +12,7 @@
 #include "config.h"
 #include "memory_statistics.h"
 #include <vector>
-#include <string>
+#include "string_utf8.h"
 #include <algorithm>
 #include "rect.h"
 #include "window.h"
@@ -31,7 +31,7 @@ namespace cdx {
 
 		virtual void clear();
 		virtual Window* create_window(const cdx::Rect& bounds,
-									  std::string title,
+									  const String_UTF8& title,
 									  bool closable,
 									  bool resizable,
 									  bool borderless) = 0;

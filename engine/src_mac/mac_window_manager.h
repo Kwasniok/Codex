@@ -23,7 +23,7 @@ namespace cdx {
 		virtual ~Window_Manager_Mac();
 		
 		virtual Window* create_window(const cdx::Rect& bounds,
-									  const std::string title,
+									  const String_UTF8& title,
 									  bool closable,
 									  bool resizable,
 									  bool borderless);

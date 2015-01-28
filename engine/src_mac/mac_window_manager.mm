@@ -25,7 +25,7 @@ Window_Manager_Mac::~Window_Manager_Mac()
 }
 
 Window* Window_Manager_Mac::create_window(const cdx::Rect& bounds,
-										  const std::string title,
+										  const String_UTF8& title,
 										  bool closable,
 										  bool resizable,
 										  bool borderless)
@@ -55,7 +55,6 @@ Window* Window_Manager_Mac::create_window(const cdx::Rect& bounds,
 	[mac_win setDelegate:delegate];
 
 	// further paramters
-	// TODO: ensure: which encoding was used?
 	NSString* _title = [[NSString alloc] initWithCString:title.c_str()
 												encoding:NSUTF8StringEncoding];
 	[mac_win setTitle:_title];
