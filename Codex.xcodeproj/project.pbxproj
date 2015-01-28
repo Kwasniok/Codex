@@ -10,13 +10,14 @@
 		B41CC02C1A57059800A16B0D /* mac_tests.mm in Sources */ = {isa = PBXBuildFile; fileRef = B41CC02B1A57059800A16B0D /* mac_tests.mm */; };
 		B41CC02E1A5706ED00A16B0D /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4F7F7C019DEE90800302B5C /* AppKit.framework */; };
 		B41CC02F1A57072400A16B0D /* libCodex_Engine_Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B49D6DA81A5317610015C436 /* libCodex_Engine_Mac.a */; };
-		B43ABE2D1A5703FB00B3FBFA /* res in CopyFiles */ = {isa = PBXBuildFile; fileRef = B49D6DCF1A531BDE0015C436 /* res */; };
+		B43ABE2D1A5703FB00B3FBFA /* res in Copy Files */ = {isa = PBXBuildFile; fileRef = B49D6DCF1A531BDE0015C436 /* res */; };
 		B442D30F1A5EBA1100E3A874 /* string_utf8.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B442D30D1A5EBA0E00E3A874 /* string_utf8.cpp */; };
 		B45709611A715981006F2E15 /* memory_statistics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B457095F1A715981006F2E15 /* memory_statistics.cpp */; };
 		B45709621A715981006F2E15 /* memory_statistics.h in Headers */ = {isa = PBXBuildFile; fileRef = B45709601A715981006F2E15 /* memory_statistics.h */; };
 		B45709691A71703D006F2E15 /* root.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B45709671A71703D006F2E15 /* root.cpp */; };
 		B457096A1A71703D006F2E15 /* root.h in Headers */ = {isa = PBXBuildFile; fileRef = B45709681A71703D006F2E15 /* root.h */; };
 		B457096C1A717628006F2E15 /* mac_root.mm in Sources */ = {isa = PBXBuildFile; fileRef = B457096B1A717628006F2E15 /* mac_root.mm */; };
+		B4710B1A1A7936D300FF07D8 /* res in Copy Files */ = {isa = PBXBuildFile; fileRef = B442D3101A5EBC1200E3A874 /* res */; };
 		B49D6DAC1A5317840015C436 /* application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B47910341A2E494C00B8A1F5 /* application.cpp */; };
 		B49D6DAD1A5317840015C436 /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B461292B1A2E6277007F66A3 /* window.cpp */; };
 		B49D6DAE1A5317840015C436 /* window_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B47910301A2E304200B8A1F5 /* window_manager.cpp */; };
@@ -46,14 +47,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		B43ABE211A5703DC00B3FBFA /* CopyFiles */ = {
+		B43ABE211A5703DC00B3FBFA /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				B43ABE2D1A5703FB00B3FBFA /* res in CopyFiles */,
+				B4710B1A1A7936D300FF07D8 /* res in Copy Files */,
+				B43ABE2D1A5703FB00B3FBFA /* res in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -61,9 +64,7 @@
 /* Begin PBXFileReference section */
 		B41CC02B1A57059800A16B0D /* mac_tests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = mac_tests.mm; sourceTree = "<group>"; };
 		B43ABE231A5703DC00B3FBFA /* Codex_Engine_Mac_Tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Codex_Engine_Mac_Tests; sourceTree = BUILT_PRODUCTS_DIR; };
-		B442D30D1A5EBA0E00E3A874 /* string_utf8.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = string_utf8.cpp; sourceTree = "<group>"; };
-		B442D30E1A5EBA0E00E3A874 /* string_utf8.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = string_utf8.h; sourceTree = "<group>"; };
-		B442D3101A5EBC1200E3A874 /* res_test */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res_test; sourceTree = "<group>"; };
+		B442D3101A5EBC1200E3A874 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
 		B457095F1A715981006F2E15 /* memory_statistics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = memory_statistics.cpp; sourceTree = "<group>"; };
 		B45709601A715981006F2E15 /* memory_statistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memory_statistics.h; sourceTree = "<group>"; };
 		B45709671A71703D006F2E15 /* root.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = root.cpp; sourceTree = "<group>"; };
@@ -151,6 +152,7 @@
 		B41CC02A1A57057400A16B0D /* tests */ = {
 			isa = PBXGroup;
 			children = (
+				B442D3101A5EBC1200E3A874 /* res */,
 				B41CC02B1A57059800A16B0D /* mac_tests.mm */,
 			);
 			path = tests;
@@ -203,9 +205,8 @@
 				B4F7F7A819DEE81800302B5C /* util */,
 				B48B57E51A5345C800E677B1 /* include_mac */,
 				B43D9A011A49C8F7007A14DA /* src_mac */,
-				B41CC02A1A57057400A16B0D /* tests */,
 				B49D6DCF1A531BDE0015C436 /* res */,
-				B442D3101A5EBC1200E3A874 /* res_test */,
+				B41CC02A1A57057400A16B0D /* tests */,
 			);
 			name = Engine;
 			path = engine;
@@ -391,7 +392,7 @@
 			buildPhases = (
 				B43ABE1F1A5703DC00B3FBFA /* Sources */,
 				B43ABE201A5703DC00B3FBFA /* Frameworks */,
-				B43ABE211A5703DC00B3FBFA /* CopyFiles */,
+				B43ABE211A5703DC00B3FBFA /* Copy Files */,
 			);
 			buildRules = (
 			);
