@@ -12,7 +12,7 @@
 #include "log.h"
 #include <fstream>
 #include <map>
-#include "string_utf8.h"
+#include "../util/string_utf8.h"
 #include "loc_string_list.h"
 
 namespace cdx {

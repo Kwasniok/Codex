@@ -11,7 +11,6 @@
 		B41CC02E1A5706ED00A16B0D /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4F7F7C019DEE90800302B5C /* AppKit.framework */; };
 		B41CC02F1A57072400A16B0D /* libCodex_Engine_Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B49D6DA81A5317610015C436 /* libCodex_Engine_Mac.a */; };
 		B43ABE2D1A5703FB00B3FBFA /* res in Copy Files */ = {isa = PBXBuildFile; fileRef = B49D6DCF1A531BDE0015C436 /* res */; };
-		B442D30F1A5EBA1100E3A874 /* string_utf8.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B442D30D1A5EBA0E00E3A874 /* string_utf8.cpp */; };
 		B45709611A715981006F2E15 /* memory_statistics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B457095F1A715981006F2E15 /* memory_statistics.cpp */; };
 		B45709621A715981006F2E15 /* memory_statistics.h in Headers */ = {isa = PBXBuildFile; fileRef = B45709601A715981006F2E15 /* memory_statistics.h */; };
 		B45709691A71703D006F2E15 /* root.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B45709671A71703D006F2E15 /* root.cpp */; };
@@ -36,6 +35,8 @@
 		B49D6DCA1A531AE20015C436 /* log.h in Headers */ = {isa = PBXBuildFile; fileRef = B49D6DC71A531AE20015C436 /* log.h */; };
 		B4ED6E1E1A793DED000460C2 /* configuration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B4ED6E1C1A793DED000460C2 /* configuration.cpp */; };
 		B4ED6E1F1A793DED000460C2 /* configuration.h in Headers */ = {isa = PBXBuildFile; fileRef = B4ED6E1D1A793DED000460C2 /* configuration.h */; };
+		B4ED6E221A793E83000460C2 /* string_utf8.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B4ED6E201A793E83000460C2 /* string_utf8.cpp */; };
+		B4ED6E231A793E83000460C2 /* string_utf8.h in Headers */ = {isa = PBXBuildFile; fileRef = B4ED6E211A793E83000460C2 /* string_utf8.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,8 @@
 		B4D8B3CC1A73E289000D0CC9 /* io_pair.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = io_pair.h; sourceTree = "<group>"; };
 		B4ED6E1C1A793DED000460C2 /* configuration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = configuration.cpp; sourceTree = "<group>"; };
 		B4ED6E1D1A793DED000460C2 /* configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = configuration.h; sourceTree = "<group>"; };
+		B4ED6E201A793E83000460C2 /* string_utf8.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = string_utf8.cpp; path = engine/util/string_utf8.cpp; sourceTree = SOURCE_ROOT; };
+		B4ED6E211A793E83000460C2 /* string_utf8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = string_utf8.h; path = engine/util/string_utf8.h; sourceTree = SOURCE_ROOT; };
 		B4F7F79919DEE81800302B5C /* info.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = info.txt; sourceTree = "<group>"; };
 		B4F7F7A919DEE81800302B5C /* rect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = rect.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B4F7F7C019DEE90800302B5C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -277,8 +280,6 @@
 				B49D6DC31A531AD20015C436 /* loc_string_list.h */,
 				B49D6DBD1A531A6D0015C436 /* localized_strings.h */,
 				B49D6DBC1A531A6D0015C436 /* localized_strings.cpp */,
-				B442D30E1A5EBA0E00E3A874 /* string_utf8.h */,
-				B442D30D1A5EBA0E00E3A874 /* string_utf8.cpp */,
 			);
 			name = localization;
 			sourceTree = "<group>";
@@ -362,6 +363,8 @@
 				B47B0A751A4B14700019C9AD /* assertion.h */,
 				B45ADB361A2F59CC00390C6E /* measure.h */,
 				B4F7F7A919DEE81800302B5C /* rect.h */,
+				B4ED6E211A793E83000460C2 /* string_utf8.h */,
+				B4ED6E201A793E83000460C2 /* string_utf8.cpp */,
 				B4D8B3CC1A73E289000D0CC9 /* io_pair.h */,
 			);
 			path = util;
@@ -390,6 +393,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4ED6E231A793E83000460C2 /* string_utf8.h in Headers */,
 				B457096A1A71703D006F2E15 /* root.h in Headers */,
 				B45709621A715981006F2E15 /* memory_statistics.h in Headers */,
 				B49D6DC01A531A6D0015C436 /* localized_strings.h in Headers */,
@@ -490,6 +494,7 @@
 				B457096C1A717628006F2E15 /* mac_root.mm in Sources */,
 				B4ED6E1E1A793DED000460C2 /* configuration.cpp in Sources */,
 				B49D6DAD1A5317840015C436 /* window.cpp in Sources */,
+				B4ED6E221A793E83000460C2 /* string_utf8.cpp in Sources */,
 				B49D6DAE1A5317840015C436 /* window_manager.cpp in Sources */,
 				B49D6DAF1A5317840015C436 /* mac_application.mm in Sources */,
 				B49D6DB01A5317840015C436 /* CDXApplication.mm in Sources */,
@@ -498,7 +503,6 @@
 				B45709611A715981006F2E15 /* memory_statistics.cpp in Sources */,
 				B45709691A71703D006F2E15 /* root.cpp in Sources */,
 				B49D6DB21A5317840015C436 /* mac_window.mm in Sources */,
-				B442D30F1A5EBA1100E3A874 /* string_utf8.cpp in Sources */,
 				B49D6DB31A5317840015C436 /* CDXWindow.mm in Sources */,
 				B49D6DB41A5317840015C436 /* mac_window_manager.mm in Sources */,
 				B49D6DB51A5317840015C436 /* CDXWindowDelegate.mm in Sources */,
