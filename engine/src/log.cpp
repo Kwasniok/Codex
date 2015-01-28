@@ -85,7 +85,7 @@ void Log::log(const char * format, ...)
  {
 	int return_value = -1;
 	constexpr size_t buffer_size = 2048;
-	static char buffer[buffer_size] = {'\0'};  // TODO: NOT SAVE!!
+	static char buffer[buffer_size] = {'\0'};  // NOT SAVE!!
 	va_list args;
 
 	va_start(args, format);

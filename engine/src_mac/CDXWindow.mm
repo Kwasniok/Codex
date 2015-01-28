@@ -59,8 +59,6 @@ using namespace cdx;
 #if CDX_DEBUG_MAC_MEM_MANGEMENT
 -(void)dealloc
 {
-	// TODO: SEND MESSAGE TO WINDOW HANDLER
-	windowHandler->close();
 	LOG_DEBUG("CDXWindow <%p> dealloc", self);
 	[super dealloc];
 }

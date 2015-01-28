@@ -23,7 +23,7 @@ void Window_Mac::close()
 		[mac_win close];
 	}
 
-	mac_win = NULL; //TODO: CHECK FOR LEAKS
+	mac_win = NULL; //TODO: check for leaks
 }
 
 bool Window_Mac::is_valid()
