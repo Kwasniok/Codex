@@ -243,8 +243,8 @@ int main(int argc, const char * argv[])
 
 	constexpr const char* file_path_in = "res/config/test_in.config.txt";
 	constexpr const char* file_path_out = "res/config/test_out.config.txt";
-	//std::ofstream ofs (file_path);
-	//ofs << c << std::endl;
+	std::ofstream ofs (file_path_out);
+	ofs << c << std::endl;
 
 
 	Configuration c2;

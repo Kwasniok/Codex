@@ -6,7 +6,7 @@ CODEX_CONFIG
 	 double:sf=2;
 
 
-	 bool:sf2=falsse;
+	bool:sf2=falsse;
 	 long:sf2=1E+5;
 	 double:sf2=2L;
 
