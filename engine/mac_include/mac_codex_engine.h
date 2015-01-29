@@ -11,8 +11,8 @@
 
 #include "../include/codex_engine.h"
 
-#include "../src_mac/mac_application.h"
-#include "../src_mac/mac_window_manager.h"
-#include "../src_mac/mac_window.h"
+#include "../mac_src/mac_application.h"
+#include "../mac_src/mac_window_manager.h"
+#include "../mac_src/mac_window.h"
 
 #endif

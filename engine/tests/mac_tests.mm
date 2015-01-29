@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Codex Soft. All rights reserved.
 //
 
-#include "../include_mac/mac_codex_engine.h"
+#include "../mac_include/mac_codex_engine.h"
 
 using namespace cdx;
 
@@ -240,8 +240,8 @@ int main(int argc, const char * argv[])
 	c.set_double({"sf"}, 2.0);
 	c.set_string_utf8({"sf"}, {"three"});
 
-	constexpr const char* file_path_in = "res/config/test_in.config.txt";
-	constexpr const char* file_path_out = "res/config/test_out.config.txt";
+	constexpr const char* file_path_in = "test_res/config/test_in.config.txt";
+	constexpr const char* file_path_out = "test_res/config/test_out.config.txt";
 	std::ofstream ofs (file_path_out);
 	ofs << c << std::endl;
 
