@@ -17,16 +17,20 @@
 
 namespace cdx {
 
+	//! based on GLFW (3.1)
 	class Application_Mac : public Application {
-		NSAutoreleasePool* autorelease_pool = NULL;
-		CDXApplicationDelegate* delegate = NULL;
+		CDXApplicationDelegate* delegate = nil;
 
 	public:
 		virtual bool initialize();
 		virtual ~Application_Mac();
+		virtual bool is_valid();
 
 		virtual void poll_events();
 		virtual void wait_events();
+
+	private:
+		inline bool _is_valid() {return delegate != nil;}
 	};
 
 }

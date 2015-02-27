@@ -9,3 +9,9 @@
 #include "window.h"
 
 using namespace cdx;
+
+void Window::was_resized()
+{
+	if (view)
+		view->was_resized();
+}

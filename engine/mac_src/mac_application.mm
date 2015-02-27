@@ -12,17 +12,25 @@ using namespace cdx;
 
 bool Application_Mac::initialize()
 {
-	// create autorelease pool
-	autorelease_pool = [[NSAutoreleasePool alloc] init];
+	[CDXApplication sharedApplication]; // creates & initializes the application
 
-	// create and initialize application
-	[CDXApplication sharedApplication];
-
-	// check if application was created
 	if(!NSApp)
 	{
+		LOG_NORMAL("[APP_MAC] Application could not be initialized, "
+				   "because no Cocoa application was created!");
 		return false;
 	}
+
+	delegate = [[CDXApplicationDelegate alloc] init];
+	if (!delegate)
+	{
+		LOG_NORMAL("[APP_MAC] Application could not be initialized, "
+				   "because no application delegate was created!");
+		return false;
+	}
+
+	[NSApp setDelegate:(id)delegate];
+
 
 	// make UI application (pop up in dock when finished launching etc.)
 	[NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
@@ -36,8 +44,16 @@ bool Application_Mac::initialize()
 
 Application_Mac::~Application_Mac()
 {
-	// destroy autorelease pool, releases all autorelease instances
-	[autorelease_pool release];
+	if (_is_valid())
+	{
+		[delegate autorelease];
+		//[NSApp terminate:nil]; // calls exit() --> stops clean up!
+	}
+}
+
+bool Application_Mac::is_valid()
+{
+	return _is_valid();
 }
 
 void Application_Mac::poll_events()
@@ -48,16 +64,13 @@ void Application_Mac::poll_events()
 											untilDate:[NSDate distantPast] // past
 											   inMode:NSDefaultRunLoopMode
 											  dequeue:YES];
-		if (event == nil)
+		if (!event)
 			break;
 
 		[NSApp sendEvent:event];
 	}
 
-	// TODO: optimize performance, maybe: move autorelease poll drain to better place and/or coulpe with timer
-	// placed here to ensure regular drain
-	[autorelease_pool release];
-	autorelease_pool = [[NSAutoreleasePool alloc] init];
+	Root::perform_garbage_collection();
 }
 
 void Application_Mac::wait_events()

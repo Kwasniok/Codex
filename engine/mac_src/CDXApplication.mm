@@ -21,21 +21,4 @@ using namespace cdx;
 	[super sendEvent:event];
 }
 
-#if CDX_DEBUG_MAC_MEM_MANGEMENT
--(id)init
-{
-	if (self = [super init])
-	{
-		LOG_DEBUG("CDXApplication <%p> init", self);
-	}
-	return self;
-}
-
--(void)dealloc
-{
-	LOG_DEBUG("CDXApplication <%p> dealloc", self);
-	[super dealloc];
-}
-#endif // CDX_DEBUG_MAC_MEM_MANGEMENT
-
 @end

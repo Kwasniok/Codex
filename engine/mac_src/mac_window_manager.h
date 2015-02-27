@@ -15,8 +15,9 @@
 
 namespace cdx {
 
+	//! based on GLFW (3.1)
 	class Window_Manager_Mac : public Window_Manager {
-		CDXWindowDelegate* delegate = NULL;
+		CDXWindowDelegate* delegate = nil;
 
 	public:
 		virtual bool initialize();
@@ -26,7 +27,8 @@ namespace cdx {
 									  const String_UTF8& title,
 									  bool closable,
 									  bool resizable,
-									  bool borderless);
+									  bool borderless,
+									  bool center);
 		virtual void destroy_window(Window* win);
 	};
 

@@ -6,82 +6,126 @@
 //  Copyright (c) 2015 Codex Soft. All rights reserved.
 //
 
-#include "root.h"
+#include "mac_root.h"
 #include "mac_application.h"
 #include "mac_window_manager.h"
 
 using namespace cdx;
 
-bool Root::initialize()
+NSAutoreleasePool* autorelease_pool = nil; //do NOT change the name (used as extern in 'mac_application.h')
+
+
+bool Root_Mac::initialize()
 {
 	if (!can_initialize) return false;
 	can_initialize = false;
+	root = this;
+	initialized = true; // must be true for destructor
 
 #if CDX_DEBUG_ROOT
-	LOG_NORMAL("[ROOT] starting initialization ...");
+	LOG_NORMAL("[ROOT_MAC] starting initialization ...");
+#endif
+
+	autorelease_pool = [[NSAutoreleasePool alloc] init];
+	
+#if CDX_DEBUG_ROOT
+		LOG_DEBUG("[ROOT_MAC] initialized autorelease pool");
+#endif
+
+	if (!CFBundleGetBundleWithIdentifier(CFSTR("com.apple.opengl")))
+	{
+		LOG_NORMAL("[ROOT_MAC] could not find OpenGL library");
+		this->~Root_Mac();
+		return false;
+	}
+#if CDX_DEBUG_ROOT
+	LOG_DEBUG("[ROOT_MAC] found openGL library");
 #endif
 
 	if(!configuration.copy_from_file({"res/config/default.config.txt"}))
 	{
-		LOG_NORMAL("[ROOT] could not load configuration");
-		can_initialize = true;
+		LOG_NORMAL("[ROOT_MAC] could not load configuration");
+		this->~Root_Mac();
 		return false;
 	}
 #if CDX_DEBUG_ROOT
-	LOG_DEBUG("[ROOT] loaded configuration");
+	LOG_DEBUG("[ROOT_MAC] loaded configuration");
 #endif
 
-	Application_Mac* app = NEW Application_Mac;
-	if (!app->initialize())
+	application = NEW Application_Mac;
+	if (!application->initialize())
 	{
-		LOG_NORMAL("[ROOT] could not initialize application");
-		delete app;
-		can_initialize = true;
+		LOG_NORMAL("[ROOT_MAC] could not initialize application");
+		this->~Root_Mac();
 		return false;
 	}
-	this->application = app;
 #if CDX_DEBUG_ROOT
-	LOG_DEBUG("[ROOT] initialized application");
+	LOG_DEBUG("[ROOT_MAC] initialized application");
 #endif
 
-	Window_Manager_Mac* win_man = NEW Window_Manager_Mac;
-	if(!win_man->initialize())
+	window_manager = NEW Window_Manager_Mac;
+	if(!window_manager->initialize())
 	{
-		LOG_NORMAL("[ROOT] could not initialize window manager");
-		delete app;
-		delete win_man;
-		can_initialize = true;
+		LOG_NORMAL("[ROOT_MAC] could not initialize window manager");
+		this->~Root_Mac();
 		return false;
 	}
-	this->window_manager = win_man;
 #if CDX_DEBUG_ROOT
-	LOG_DEBUG("[ROOT] initialized window manager");
+	LOG_DEBUG("[ROOT_MAC] initialized window manager");
 #endif
 
 #if CDX_DEBUG_ROOT
-	LOG_NORMAL("[ROOT] finished initialization!");
+	LOG_NORMAL("[ROOT_MAC] finished initialization!");
 #endif
 
-	initialized = true;
 	return true;
 }
 
-Root::~Root()
+Root_Mac::~Root_Mac()
 {
 	if (!initialized) return;
-	initialized = false; // prevent double destruction
+	initialized = false;
 
 #if CDX_DEBUG_ROOT
-	LOG_NORMAL("[ROOT] starting clean-up ...");
+	LOG_NORMAL("[ROOT_MAC] starting clean-up ...");
 #endif
-	delete window_manager;
+	if (window_manager)
+	{
+		delete window_manager;
+		window_manager = nullptr;
 #if CDX_DEBUG_ROOT
-	LOG_DEBUG("[ROOT] deleted window_manager");
+		LOG_DEBUG("[ROOT_MAC] deleted window_manager");
 #endif
-	delete application;
+	}
+
+	if (application)
+	{
+		delete application;
+		application = nullptr;
 #if CDX_DEBUG_ROOT
-	LOG_DEBUG("[ROOT] deleted application");
-	LOG_NORMAL("[ROOT] finished clean-up!");
+		LOG_DEBUG("[ROOT_MAC] deleted application");
 #endif
-	//can_initialize = true; // TODO: check if all subsystems are deleted entirely --> uncomment
+	}
+
+	if (autorelease_pool != nil)
+	{
+		[autorelease_pool drain];
+		autorelease_pool = nil;
+#if CDX_DEBUG_ROOT
+		LOG_DEBUG("[ROOT_MAC] released autorelease pool");
+#endif
+	}
+	root = nullptr;
+	can_initialize = true;
+
+#if CDX_DEBUG_ROOT
+	LOG_NORMAL("[ROOT_MAC] finished clean-up!");
+#endif
+}
+
+void Root_Mac::perform_garbage_collection()
+{
+	//LOG_DEBUG("[ROOT_MAC] GC drain"); // for tests only
+	[autorelease_pool drain];
+	autorelease_pool = [[NSAutoreleasePool alloc] init];
 }

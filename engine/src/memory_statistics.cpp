@@ -67,7 +67,7 @@ void Memory_Statistics::tracked_allocation(void* ptr, const Allocation_Info& m)
 
 void Memory_Statistics::deallocation(void* ptr)
 {
-	if (ptr == nullptr) return;
+	if (!ptr) return;
 
 	auto it = infos.find(ptr);
 	if (it != infos.end())

@@ -20,9 +20,9 @@ using namespace cdx;
 				 handler:(cdx::Window*)handler
 {
 	// has valid parent window?
-	if (handler == nullptr) {
+	if (!handler) {
 		LOG_DEBUG("Cannot initialize CDXWindow without a vaild handler");
-		return NULL;
+		return nil;
 	}
 
 	// initialize
@@ -35,9 +35,7 @@ using namespace cdx;
 		// store pointer to parent window
 		windowHandler = handler;
 		[self setReleasedWhenClosed:YES];
-#if CDX_DEBUG_MAC_MEM_MANGEMENT
-		LOG_DEBUG("CDXWindow <%p> init", self);
-#endif
+
 	}
 	return self;
 }
@@ -45,23 +43,15 @@ using namespace cdx;
 -(void)sendEvent:(NSEvent *)theEvent
 {
 	#if CDX_DEBUG_MAC_PRINT_WINDOW_EVENTS
-	LOG_DEBUG("CDXWindow <%p> event: %s", self, theEvent.description.UTF8String);
+	LOG_DEBUG("CDXWindow %p event: %s", self, theEvent.description.UTF8String);
 	#endif
 	[super sendEvent:theEvent];
 }
 
 -(void)setContentSize:(NSSize)aSize
 {
-	LOG_DEBUG("CDXWindow <%p> resize: x=%lf, y=%lf", self, aSize.width, aSize.height);
+	LOG_DEBUG("CDXWindow %p resize: x=%lf, y=%lf", self, aSize.width, aSize.height);
 	[super setContentSize:aSize];
 }
-
-#if CDX_DEBUG_MAC_MEM_MANGEMENT
--(void)dealloc
-{
-	LOG_DEBUG("CDXWindow <%p> dealloc", self);
-	[super dealloc];
-}
-#endif // CDX_DEBUG_MAC_MEM_MANGEMENT
 
 @end

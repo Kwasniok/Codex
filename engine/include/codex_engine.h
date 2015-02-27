@@ -16,5 +16,7 @@
 #include "../src/application.h"
 #include "../src/window_manager.h"
 #include "../src/window.h"
+#include "../src/view.h"
+#include "../src/context.h"
 
 #endif

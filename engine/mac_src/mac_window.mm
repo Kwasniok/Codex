@@ -12,27 +12,28 @@ using namespace cdx;
 
 Window_Mac::~Window_Mac()
 {
-	if (is_valid()) {
-		close();
-	}
-}
-
-void Window_Mac::close()
-{
-	if (mac_win){
-		[mac_win close];
-	}
-
-	mac_win = NULL; //TODO: check for leaks
+	close();
 }
 
 bool Window_Mac::is_valid()
 {
-	return mac_win != NULL;
+	return _is_valid();
+}
+
+void Window_Mac::close()
+{
+	if (_is_valid()){
+		[mac_win setReleasedWhenClosed:NO];
+		[mac_win close];
+		[mac_win autorelease];
+		mac_win = nil;
+	}
 }
 
 void Window_Mac::set_visible(bool vis)
 {
+	if (!_is_valid()) return;
+
 	if (vis)
 	{
 		[mac_win makeKeyAndOrderFront:nil];
@@ -44,5 +45,27 @@ void Window_Mac::set_visible(bool vis)
 
 bool Window_Mac::is_visible()
 {
+	if (!_is_valid()) return false;
+
 	return [mac_win isVisible];
+}
+
+void Window_Mac::set_view(cdx::View *v)
+{
+	if (!_is_valid()) return;
+
+	if (view)
+	{
+		view->~View();
+		[mac_win setContentView:nil];
+		view = nullptr;
+	}
+
+	view = v;
+
+	if (v != nullptr)
+	{
+		View_Mac_GL* mac_gl_view = reinterpret_cast<View_Mac_GL*>(v);
+		[mac_win setContentView:mac_gl_view->mac_gl_view];
+	}
 }

@@ -10,65 +10,70 @@
 
 using namespace cdx;
 
+
 bool Window_Manager_Mac::initialize()
 {
 	if (!Window_Manager_Mac::delegate) {
 		delegate = [[CDXWindowDelegate alloc] init];
 	}
 
-	return delegate != NULL;
+	return delegate != nil;
 }
 
 Window_Manager_Mac::~Window_Manager_Mac()
 {
-	delegate = NULL;
+	[delegate autorelease];
+	delegate = nil;
 }
 
 Window* Window_Manager_Mac::create_window(const cdx::Rect& bounds,
 										  const String_UTF8& title,
 										  bool closable,
 										  bool resizable,
-										  bool borderless)
+										  bool borderless,
+										  bool center)
 {
-	Window_Mac* win = NEW Window_Mac();
+	Window_Mac* win = NEW Window_Mac;
 
-	// parameters
+	CDXWindow* mac_win;
+
 	NSRect frame = NSMakeRect(bounds.x, bounds.y, bounds.width, bounds.height);
 	NSUInteger styleMask = 0;
-	if (closable)
-	{
-		styleMask |= NSClosableWindowMask;
-	}
-	if (resizable)
-	{
-		styleMask |= NSResizableWindowMask;
-	}
+	styleMask |= closable ? NSClosableWindowMask : 0;
+	styleMask |= resizable ? NSResizableWindowMask : 0;
 	styleMask |=  borderless ? NSBorderlessWindowMask : NSTitledWindowMask;
 
-	CDXWindow* mac_win = [[CDXWindow alloc] initWithContentRect:frame
-													  styleMask:styleMask
-														backing:NSBackingStoreBuffered
-														  defer:NO
-														handler:win];
+	mac_win = [[CDXWindow alloc] initWithContentRect:frame
+										   styleMask:styleMask
+											 backing:NSBackingStoreBuffered
+											   defer:NO
+											 handler:win];
 
-	// set delegate
-	[mac_win setDelegate:delegate];
-
-	// further paramters
-	NSString* _title = [[NSString alloc] initWithCString:title.c_str()
-												encoding:NSUTF8StringEncoding];
-	[mac_win setTitle:_title];
-	[_title release];
-
-	if(mac_win)
-	{
-		win->set_mac_window(mac_win);
-		add_window_to_list(win);
-	}
-	else
+	if (!mac_win)
 	{
 		delete win;
 		win = nullptr;
+	}
+	else
+	{
+
+		// further paramters
+		NSString* _title = [[NSString alloc] initWithCString:title.c_str()
+													encoding:NSUTF8StringEncoding];
+		[mac_win setTitle:_title];
+		[_title release];
+
+		[mac_win setAcceptsMouseMovedEvents:YES];
+		[mac_win center];
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= 1070
+		if (floor(NSAppKitVersionNumber) > NSAppKitVersionNumber10_6)
+			[mac_win setRestorable:NO];
+#endif /*MAC_OS_X_VERSION_MAX_ALLOWED*/
+
+		[mac_win setDelegate:delegate];
+
+		win->set_mac_window(mac_win);
+		add_window_to_list(win);
 	}
 
 	return win;

@@ -21,9 +21,15 @@
 
 namespace cdx {
 
-	class Configuration { // TODO: add static configuration options!?
+	struct OpenGl_Info {
+		unsigned int version_major = 0;
+		unsigned int version_minor = 0;
+	};
+
+	class Configuration { // TODO: add (more) static configuration options
 		// static configurations
 		// e.g. int default_window_size; ...
+		OpenGl_Info gl_preferences;
 
 		// dynamic configurations
 		std::map<std::string, bool> val_bool;

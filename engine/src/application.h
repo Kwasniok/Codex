@@ -21,7 +21,8 @@ namespace cdx {
 
 	public:
 		virtual bool initialize() = 0;
-		virtual ~Application() { };
+		virtual ~Application() = default;
+		virtual bool is_valid() = 0;
 
 		virtual void poll_events() = 0;
 		virtual void wait_events() = 0;

@@ -20,21 +20,14 @@ using namespace cdx;
 	return TRUE;
 }
 
-#if CDX_DEBUG_MAC_MEM_MANGEMENT
--(id)init
+-(void)windowDidResize:(NSNotification *)notification
 {
-	if (self = [super init])
-	{
-		LOG_DEBUG("CDXWindowDelegate <%p> init", self);
-	}
-	return self;
+	CDXWindow* win = notification.object;
+	if (win)
+		win.windowHandler->was_resized();
+	else
+		LOG_NORMAL_FORCE_DETAILED("[WMAN_MAC] Could not notify window for resize."
+								  "No sender was found!");
 }
-
--(void)dealloc
-{
-	LOG_DEBUG("CDXWindowDelegate <%p> dealloc", self);
-	[super dealloc];
-}
-#endif // CDX_DEBUG_MAC_MEM_MANGEMENT
 
 @end

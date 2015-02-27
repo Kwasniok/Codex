@@ -11,8 +11,11 @@
 
 #include "../include/codex_engine.h"
 
+#include "../mac_src/mac_root.h"
 #include "../mac_src/mac_application.h"
 #include "../mac_src/mac_window_manager.h"
 #include "../mac_src/mac_window.h"
+#include "../mac_src/mac_gl_view.h"
+#include "../mac_src/mac_gl_context.h"
 
 #endif

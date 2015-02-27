@@ -258,7 +258,7 @@ int main(int argc, const char * argv[])
 		if (!root.initialize()) return EXIT_FAILURE;
 
 		Window* win = Root::get_window_manager().create_window(cdx::Rect(200, 200, 200, 200),
-		"Placeholder Title", true, true, false);
+															   "Placeholder Title", true, true, false);
 		win->set_visible(true);
 
 		while (win->is_valid())
@@ -268,6 +268,138 @@ int main(int argc, const char * argv[])
 
 		Root::get_window_manager().destroy_window(win);
 	} // end of scope --> calls root's destructor --> calls destruction routine of subsystems
+	 */
+
+	/*
+	{
+		Root_Mac root;
+		if (!root.initialize()) return EXIT_FAILURE;
+
+		Window* win = Root::get_window_manager().create_window(cdx::Rect(200, 200, 200, 200),
+													   "OpenGL View Test", true, true, false, true);
+		if (!win) return EXIT_FAILURE;
+		win->set_visible(true);
+
+		View_Mac_GL view;
+		if (!view.initialize(win)) return EXIT_FAILURE;
+
+		win->set_view(&view);
+
+		Context* context = NEW Context_Mac_GL;
+		Context_Config cc;
+		if (!context->initialize(cc, &view)) return EXIT_FAILURE;
+		view.set_context(context);
+
+		context->make_current();
+
+		glClearColor(0.8f, 1.0f, 0.8f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+		glSwapAPPLE();
+
+		while (win->is_valid())
+		{
+			glClearColor(0.8f, 1.0f, 0.8f, 1.0f);
+			glClear(GL_COLOR_BUFFER_BIT);
+			glSwapAPPLE();
+			Root::get_application().wait_events();
+		}
+
+		Root::get_window_manager().destroy_window(win);
+
+		delete context;
+	}
+	 */
+
+	/*
+	{
+		//NSAutoreleasePool* autorelease_pool = [[NSAutoreleasePool alloc] init];
+
+		//CGEventSourceRef event_source = CGEventSourceCreate(kCGEventSourceStateHIDSystemState);
+		//CGEventSourceSetLocalEventsSuppressionInterval(event_source, 0.0);
+
+		//CFBundleGetBundleWithIdentifier(CFSTR("com.apple.opengl"));
+
+		[CDXApplication sharedApplication];
+		[NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
+		[NSApp finishLaunching];
+
+		CDXApplicationDelegate* app_delegate = [[CDXApplicationDelegate alloc] init];
+		[NSApp setDelegate:(id)app_delegate]; // ???
+
+		CDXWindowDelegate* win_delegate = [[CDXWindowDelegate alloc] init];
+		NSRect rect = NSMakeRect(0, 0, 200, 200);
+		NSUInteger style_mask;
+		NSWindow* window = [[NSWindow alloc] initWithContentRect:rect
+													   styleMask:style_mask
+														 backing:NSBackingStoreBuffered defer:NO];
+
+		NSView* view = [[NSView alloc] initWithFrame:rect];
+		[view setWantsBestResolutionOpenGLSurface:YES]; // >= 10.6
+		[window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary]; // >= 10.6
+
+		[window setTitle:@"Title"];
+		[window setContentView:view];
+		[window setDelegate:win_delegate];
+		[window setAcceptsMouseMovedEvents:YES];
+		[window center];
+		[window setRestorable:NO]; // >= 10.6
+
+		NSOpenGLPixelFormatAttribute pfatts[23];
+		unsigned int att_count = -1;
+		// 1
+		pfatts[++att_count] = NSOpenGLPFADoubleBuffer;
+		// 2
+		pfatts[++att_count] = NSOpenGLPFAClosestPolicy;
+		// 3
+		pfatts[++att_count] = NSOpenGLPFAOpenGLProfile; // max >= 10.7 & major > 2
+		// 4
+		pfatts[++att_count] = NSOpenGLProfileVersion3_2Core; // max >= 10.7 & major > 2
+		// 5 + 6
+		pfatts[++att_count] = NSOpenGLPFAColorSize;
+		pfatts[++att_count] = 8 * 3;
+		// 7 + 8
+		pfatts[++att_count] = NSOpenGLPFAAlphaSize;
+		pfatts[++att_count] = 8;
+		// 9 + 10
+		pfatts[++att_count] = NSOpenGLPFADepthSize;
+		pfatts[++att_count] = 24;
+		// 11 +12
+		pfatts[++att_count] = NSOpenGLPFAStencilSize;
+		pfatts[++att_count] = 8;
+		// 13 + 14
+		pfatts[++att_count] = NSOpenGLPFAAccumSize;
+		pfatts[++att_count] = 0;
+		// 15 + 16
+		pfatts[++att_count] = NSOpenGLPFAAuxBuffers;
+		pfatts[++att_count] = 0;
+		// 17
+		//pfatts[++att_count] = NSOpenGLPFAStereo;
+		// 18 - 21
+		pfatts[++att_count] = NSOpenGLPFASampleBuffers;
+		pfatts[++att_count] = 1;
+		pfatts[++att_count] = NSOpenGLPFASamples;
+		pfatts[++att_count] = 0;
+		// 22
+		pfatts[++att_count] = NSOpenGLPFANoRecovery;
+		// 23 <= max_pfatts
+		pfatts[++att_count] = nil;
+		NSOpenGLPixelFormat* pf = [[NSOpenGLPixelFormat alloc] initWithAttributes:pfatts];
+
+		NSOpenGLContext* context = [[NSOpenGLContext alloc] initWithFormat:pf shareContext:nil];
+		[context setView:view];
+		[context makeCurrentContext];
+
+		std::cout << glGetString(GL_VERSION) << std::endl;
+
+		[window makeKeyAndOrderFront:nil];
+
+		glClearColor(0.0f, 0.0f, 0.0, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		glSwapAPPLE();
+		//glClear(GL_COLOR_BUFFER_BIT);
+		//glSwapAPPLE();
+	}
 	 */
 }
 

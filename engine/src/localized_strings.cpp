@@ -220,7 +220,7 @@ std::istream& operator>>(std::istream& is, cdx::Localized_String_Map& ls)
 
 	// id string list:
 	std::pair<int, String_UTF8> p;
-	char c;
+	char c = EOF;
 
 	do
 	{
@@ -264,7 +264,7 @@ std::istream& operator>>(std::istream& is, std::pair<int, String_UTF8>& p)
 {
 	std::pair<int, String_UTF8> tmp;
 
-	char c;
+	char c = EOF;
 	is >> tmp.first;
 	is >> c;
 	if (c != ',')
