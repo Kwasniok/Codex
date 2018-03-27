@@ -14,7 +14,7 @@
 namespace cdx {
 
 	// was not tested completely
-	//! String_UTF8 is a string class completely bckward-compatible to std::string.
+	//! String_UTF8 is a string class completely backward-compatible to std::string.
 	//! Additional functions for UTF-8 management are: add_utf8_char(), calculate_utf8_length() &
 	//! good()
 	class String_UTF8 : public std::string {
