@@ -271,25 +271,26 @@ int main(int argc, const char * argv[])
 	}
 	 */
 
-	// full application
+	// full application (minimal)
 	/*
 	{
-		Root root;
+		Root_Mac root;
 		if (!root.initialize()) return EXIT_FAILURE;
 
 		Window* win = Root::get_window_manager().create_window(cdx::Rect(200, 200, 200, 200),
-															   "Placeholder Title", true, true, false);
+															   "Placeholder Title", true, true, false, true);
 		win->set_visible(true);
 
 		while (win->is_valid())
 		{
-			Root::get_application().wait_events();
+			Root_Mac::get_application().wait_events();
 		}
 
-		Root::get_window_manager().destroy_window(win);
+		Root_Mac::get_window_manager().destroy_window(win);
 	} // end of scope --> calls root's destructor --> calls destruction routine of subsystems
 	 */
 	
+	// full application (blinking window)
 	/*
 	{
 		Root_Mac root;
@@ -316,9 +317,13 @@ int main(int argc, const char * argv[])
 		glClear(GL_COLOR_BUFFER_BIT);
 		glSwapAPPLE();
 
+		
+		float f = 0.0f;
 		while (win->is_valid())
 		{
-			glClearColor(0.8f, 1.0f, 0.8f, 1.0f);
+			f += 0.01f;
+			if (f > 1.0f) f = 0.0f;
+			glClearColor(f, 1.0f - f, f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
 			glSwapAPPLE();
 			Root::get_application().wait_events();
@@ -329,7 +334,8 @@ int main(int argc, const char * argv[])
 		delete context;
 	}
 	 */
-
+	
+	// full application (MAC raw)
 	/*
 	{
 		//NSAutoreleasePool* autorelease_pool = [[NSAutoreleasePool alloc] init];
