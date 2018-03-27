@@ -382,7 +382,7 @@ int main(int argc, const char * argv[])
 		// 22
 		pfatts[++att_count] = NSOpenGLPFANoRecovery;
 		// 23 <= max_pfatts
-		pfatts[++att_count] = nil;
+		pfatts[++att_count] = NULL;
 		NSOpenGLPixelFormat* pf = [[NSOpenGLPixelFormat alloc] initWithAttributes:pfatts];
 
 		NSOpenGLContext* context = [[NSOpenGLContext alloc] initWithFormat:pf shareContext:nil];
