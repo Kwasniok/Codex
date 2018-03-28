@@ -1,0 +1,13 @@
+UTF8
+CODEX_CONFIG
+
+	 bool:sf=false;
+	 long:sf=1;
+	 double:sf=2;
+	 string_utf8:sf=three;
+
+
+	bool:sf2=falsse;
+	long:sf2=1E+5;
+	double:sf2=2L;
+	string_utf8:sf2=three;two;one
