@@ -13,13 +13,12 @@
 #include <fstream>
 #include <map>
 #include "../util/string_utf8.h"
-#include "loc_string_list.h"
 
 namespace cdx {
 
 	class Localized_String_Map {
 		//! maps all ids to the correponding string for the givien language
-		std::map<int, String_UTF8> strings;
+		std::map<String_UTF8, String_UTF8> strings;
 		//! contains the language identifier
 		String_UTF8 language_id;
 	public:
@@ -27,21 +26,21 @@ namespace cdx {
 		//! unique constant to indicate a missed string
 		static const String_UTF8& NO_STRING_FOR_ID_MSG;
 
-		//! adds the vlaue pair (redefinitions are allowed)
+		//! adds the value pair (redefinitions are allowed)
 		//! @see get_str(), get_all(), remove_str()
-		void add_str(const int n, const String_UTF8& str);
-		//! adds the vlaue pair (redefinitions are allowed)
+		void set_str(const String_UTF8& id, const String_UTF8& str);
+		//! adds the value pair (redefinitions are allowed)
 		//! @see get_str(), get_all(), remove_str()
-		void add_str(std::pair<int, String_UTF8>& isp);
+		void set_str(std::pair<String_UTF8, String_UTF8>& isp);
 		//! @return localized string for id and given langauge (as a c-string to improve performance)
-		//! @see add_str, get_all(), remove_str()
-		const String_UTF8& get_str(const int n) const;
+		//! @see set_str, get_all(), remove_str()
+		const String_UTF8& get_str(const String_UTF8& id) const;
 		//! @return true if string id was found
-		//! @see add_str(), get_str(), get_all()
-		bool remove_str(const int n);
+		//! @see set_str(), get_str(), get_all()
+		bool remove_str(const String_UTF8& id);
 		//! @return map with all localized strings
-		//! @see add_str(), get_str(), remove_str()
-		const std::map<int, String_UTF8> get_all() const {return strings;}
+		//! @see set_str(), get_str(), remove_str()
+		const std::map<String_UTF8, String_UTF8> get_all() const {return strings;}
 
 		//! sets the language identifier (only once allowed)
 		//! @see get_language_id()
@@ -83,7 +82,7 @@ namespace cdx {
 		//! @see has_language(), remove_language()
 		void add_language(Localized_String_Map&& lsm);
 		//! @return true if language was found and removed
-		bool remove_language(const String_UTF8 lang_id);
+		bool remove_language(const String_UTF8& lang_id);
 		//! @return a pointer to the associated string set
 		//! (or nullptr if the language id is unknown)
 		Localized_String_Map* get_language(const String_UTF8& lang_id);
@@ -102,7 +101,7 @@ namespace cdx {
 
 		//! @return localized string from default language (or fallback language if incomplete)
 		//! @see set_default_language(), set_fallback_language()
-		const String_UTF8& get_str(const int n) const;
+		const String_UTF8& get_str(const String_UTF8& id) const;
 		//! @return all languages including their localized strings in a map
 		const std::map<String_UTF8, Localized_String_Map>& get_all() const {return all_languages;}
 
@@ -112,13 +111,13 @@ namespace cdx {
 
 }
 
-//! FORMAT(UTF-8):<p>UTF8<p>LANG_ID<p>id1, string1;<p>id2, string2;<p>...
+//! FORMAT(UTF-8):<p>UTF8<p>LANG_ID<p>id1 : string1;<p>id2 : string2;<p>...
 std::istream& operator>>(std::istream& is, cdx::Localized_String_Map& ls);
-//! FORMAT(UTF-8):<p>UTF8<p>LANG_ID<p>id1, string1;<p>id2, string2;<p>...
+//! FORMAT(UTF-8):<p>UTF8<p>LANG_ID<p>id1 : string1;<p>id2 : string2;<p>...
 std::ostream& operator<<(std::ostream& os, cdx::Localized_String_Map&  ls);
-//! FORMAT(UTF-8):<p>UTF8<p>id, string
-std::istream& operator>>(std::istream& is, std::pair<int, cdx::String_UTF8>& p);
-//! FORMAT(UTF-8):<p>UTF8<p>id, string
-std::ostream& operator<<(std::ostream& os, std::pair<int, cdx::String_UTF8>& p);
+//! FORMAT(UTF-8):id : string
+std::istream& operator>>(std::istream& is, std::pair<cdx::String_UTF8, cdx::String_UTF8>& p);
+//! FORMAT(UTF-8):id : string
+std::ostream& operator<<(std::ostream& os, std::pair<cdx::String_UTF8, cdx::String_UTF8>& p);
 
 #endif /* defined(__Codex__locale_string__) */

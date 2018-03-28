@@ -53,6 +53,19 @@ int main(int argc, const char * argv[])
 	}
 	 */
 
+	// localization 0 (basic io tests)
+	/*
+	{
+		std::pair<cdx::String_UTF8, cdx::String_UTF8> p;
+		p.first = String_UTF8("STRING_ID");
+		p.second = String_UTF8("string message");
+		std::cout << p << std::endl;
+		
+		std::cout << "Please type in the last line maunally!" << std::endl;
+		std::cin >> p;
+		std::cout << p << std::endl;
+	}
+	 */
 
 	// localization 1 (functionality test)
 	/*
@@ -71,20 +84,29 @@ int main(int argc, const char * argv[])
 		lsm2.copy_from_file(std::string("test_res/lang/TE_fb.lang.txt"));
 		l.add_language(lsm1); // copy
 		l.add_language(std::move(lsm2)); // move
+		
 		l.set_default_language(std::string("TE_st"));
 		l.set_fallback_language(std::string("TE_fb"));
+		std::cout << "TE_st=" << (l.has_language(std::string("TE_st"))? "true":"false") << ", ";
+		std::cout << "TE_fb=" << (l.has_language(std::string("TE_fb"))? "true":"false"); // 2x true
+		std::cout << std::endl << std::endl;
 
-		std::cout << l.get_str(1) << std::endl; // should be in default language
-		std::cout << l.get_str(3) << std::endl << std::endl; // should be in fallback language
-
+		std::cout << l.get_str("TEST_1_ID") << std::endl; // should be in default language
+		std::cout << l.get_str("TEST_3_ID") << std::endl << std::endl; // should be in fallback language
+		
 		l.remove_language(std::string("TE_st"));
-		std::cout << l.get_str(1) << std::endl << std::endl; // should be in fallback language
+		std::cout << "TE_st=" << (l.has_language(std::string("TE_st"))? "true":"false") << ", ";
+		std::cout << "TE_fb=" << (l.has_language(std::string("TE_fb"))? "true":"false"); // false, true
+		std::cout << std::endl << std::endl;
 
+		std::cout << l.get_str("TEST_1_ID") << std::endl << std::endl; // should be in fallback language
+		
 		l.remove_language(std::string("TE_fb"));
-		std::cout << l.get_str(1) << std::endl << std::endl; // should be an error string
-
-		std::cout << l.has_language(std::string("TE_st")) << ", ";
-		std::cout << l.has_language(std::string("TE_fb")) << std::endl << std::endl; // 2x false
+		std::cout << "TE_st=" << (l.has_language(std::string("TE_st"))? "true":"false") << ", ";
+		std::cout << "TE_fb=" << (l.has_language(std::string("TE_fb"))? "true":"false"); // 2x false
+		std::cout << std::endl << std::endl;
+		
+		std::cout << l.get_str("TEST_1_ID") << std::endl << std::endl; // should be an error string
 	}
 	 */
 
@@ -125,7 +147,7 @@ int main(int argc, const char * argv[])
 		<< "ms." << std::endl;
 
 		Localized_String_Map lsm;
-		lsm.copy_from_file(std::string("res_test/lang/TE_fb.lang.txt"));
+		lsm.copy_from_file(std::string("test_res/lang/TE_fb.lang.txt"));
 		Localizer& lo = Localizer::get();
 		lo.add_language(lsm);
 		lo.set_default_language(std::string("TE_fb"));
@@ -133,7 +155,7 @@ int main(int argc, const char * argv[])
 		start = std::chrono::high_resolution_clock::now();
 		for (long l=0; l < reps; ++l)
 		{
-			lo.get_str(1);
+			lo.get_str("TEST_1_ID");
 		}
 		stop = std::chrono::high_resolution_clock::now();
 

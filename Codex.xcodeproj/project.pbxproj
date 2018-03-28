@@ -112,7 +112,6 @@
 		B49D6DBB1A5318040015C436 /* mac_config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = mac_config.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B49D6DBC1A531A6D0015C436 /* localized_strings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = localized_strings.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		B49D6DBD1A531A6D0015C436 /* localized_strings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = localized_strings.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		B49D6DC31A531AD20015C436 /* loc_string_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loc_string_list.h; sourceTree = "<group>"; };
 		B49D6DC51A531AE20015C436 /* log_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = log_config.h; sourceTree = "<group>"; };
 		B49D6DC61A531AE20015C436 /* log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = log.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		B49D6DC71A531AE20015C436 /* log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = log.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -329,7 +328,6 @@
 		B49D6DC21A531A740015C436 /* localization */ = {
 			isa = PBXGroup;
 			children = (
-				B49D6DC31A531AD20015C436 /* loc_string_list.h */,
 				B49D6DBD1A531A6D0015C436 /* localized_strings.h */,
 				B49D6DBC1A531A6D0015C436 /* localized_strings.cpp */,
 			);

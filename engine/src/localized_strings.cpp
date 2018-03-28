@@ -13,35 +13,35 @@ using namespace cdx;
 const String_UTF8& Localized_String_Map::NO_STRING_FOR_ID_MSG
 	= String_UTF8("~NO LOCALIZED STRING~");
 
-void Localized_String_Map::add_str(const int n, const String_UTF8& str)
+void Localized_String_Map::set_str(const String_UTF8& id, const String_UTF8& str)
 {
-	std::pair<int, String_UTF8> isp = {n, str};
-	add_str(isp);
+	std::pair<String_UTF8, String_UTF8> isp = {id, str};
+	set_str(isp);
 }
 
-void Localized_String_Map::add_str(std::pair<int, String_UTF8>& isp)
+void Localized_String_Map::set_str(std::pair<String_UTF8, String_UTF8>& isp)
 {
 	auto it = strings.find(isp.first);
 	if (it != strings.end())
 	{
-		LOG_NORMAL("Redefinition of a loalized string for language=\"%s\" and id=%i.",
-				   language_id.c_str(), isp.first);
+		LOG_NORMAL("Redefinition of a loalized string for language=%s and id=%s.",
+				   language_id.c_str(), isp.first.c_str());
 	}
 
 #ifdef DEBUG
 	if(!isp.second.good())
 	{
-		LOG_DEBUG("Found string with bad UTF-8 format for language=\"%s\" and id=%i: \n\t\"%s\"",
-				  language_id.c_str(), isp.first, isp.second.c_str());
+		LOG_DEBUG("Found string with bad UTF-8 format for language=%s and id=%s: \n\t\"%s\"",
+				  language_id.c_str(), isp.first.c_str(), isp.second.c_str());
 	}
 #endif
 
 	strings[isp.first] = isp.second;
 }
 
-const String_UTF8& Localized_String_Map::get_str(const int n) const
+const String_UTF8& Localized_String_Map::get_str(const String_UTF8& id) const
 {
-	auto it = strings.find(n);
+	auto it = strings.find(id);
 	if (it != strings.end())
 	{
 		return it->second;
@@ -52,9 +52,9 @@ const String_UTF8& Localized_String_Map::get_str(const int n) const
 	}
 }
 
-bool Localized_String_Map::remove_str(const int n)
+bool Localized_String_Map::remove_str(const String_UTF8& id)
 {
-	auto it = strings.find(n);
+	auto it = strings.find(id);
 	if (it != strings.end())
 	{
 		strings.erase(it);
@@ -68,7 +68,7 @@ void Localized_String_Map::set_language_id(const cdx::String_UTF8& lang_id)
 #ifdef DEBUG
 	if (!lang_id.good())
 	{
-		LOG_DEBUG("Found string with bad format UTF-8 format for language=\"%s\".",
+		LOG_DEBUG("Found string with bad format UTF-8 format for language=%s.",
 				  lang_id.c_str());
 	}
 #endif
@@ -110,7 +110,7 @@ void Localizer::add_language(cdx::Localized_String_Map&& lsm)
 	all_languages[lsm.get_language_id()] = std::move(lsm);
 }
 
-bool Localizer::remove_language(const String_UTF8 lang_id)
+bool Localizer::remove_language(const String_UTF8& lang_id)
 {
 	auto it = all_languages.find(lang_id);
 	if (it != all_languages.end()) // language defined?
@@ -134,7 +134,7 @@ Localized_String_Map* Localizer::get_language(const String_UTF8& lang_id)
 		// language defined
 		return &all_languages[lang_id];
 	}
-	LOG_NORMAL("Language identifier unknown! Nullptr is returned for language=\"%s\".",
+	LOG_NORMAL("Language identifier unknown! Nullptr is returned for language=%s.",
 			   lang_id.c_str());
 	return nullptr;
 }
@@ -171,11 +171,11 @@ bool Localizer::set_fallback_language(const String_UTF8& lang_id)
 	return false;
 }
 
-const String_UTF8& Localizer::get_str(const int n) const
+const String_UTF8& Localizer::get_str(const String_UTF8& id) const
 {
 	if (default_language)
 	{
-		const String_UTF8& str = default_language->get_str(n);
+		const String_UTF8& str = default_language->get_str(id);
 
 		if (str != Localized_String_Map::NO_STRING_FOR_ID_MSG)
 		{
@@ -184,7 +184,7 @@ const String_UTF8& Localizer::get_str(const int n) const
 	}
 	if (fallback_language)
 	{
-		const String_UTF8& str = fallback_language->get_str(n);
+		const String_UTF8& str = fallback_language->get_str(id);
 
 		if (str != Localized_String_Map::NO_STRING_FOR_ID_MSG)
 		{
@@ -192,7 +192,7 @@ const String_UTF8& Localizer::get_str(const int n) const
 		}
 	}
 
-	LOG_NORMAL("Found no localized string with id=%i for default and fallback language!", n);
+	LOG_NORMAL("Found no localized string with id=%s for default and fallback language!", id.c_str());
 	return Localized_String_Map::NO_STRING_FOR_ID_MSG;
 }
 
@@ -214,12 +214,23 @@ std::istream& operator>>(std::istream& is, cdx::Localized_String_Map& ls)
 	}
 	else
 	{
-		LOG_NORMAL("Found missing format signature for localization file (expected 'UTF8')!");
+		LOG_NORMAL("Missing format signature for localization file (expected 'UTF8')!");
+		is.setf(std::ios_base::failbit);
+		return is;
 	}
-	ls.set_language_id({s});
+	if (!s.empty())
+	{
+		ls.set_language_id({s});
+	}
+	else
+	{
+		LOG_NORMAL("Missing language identifier for localization file!");
+		is.setf(std::ios_base::failbit);
+		return is;
+	}
 
 	// id string list:
-	std::pair<int, String_UTF8> p;
+	std::pair<String_UTF8, String_UTF8> p;
 	char c = EOF;
 
 	do
@@ -232,7 +243,16 @@ std::istream& operator>>(std::istream& is, cdx::Localized_String_Map& ls)
 			is.setf(std::ios_base::failbit);
 		}
 		if (!is.good()) break;
-		ls.add_str(p);
+		if (p.first.empty())
+		{
+			LOG_NORMAL("Missing string identifier in language %s!", ls.get_language_id().c_str());
+			is.setf(std::ios_base::failbit);
+			break;
+		}
+		else
+		{
+			ls.set_str(p);
+		}
 	}
 	while (is.good());
 
@@ -248,7 +268,7 @@ std::ostream& operator<<(std::ostream& os, cdx::Localized_String_Map& ls)
 	os << ls.get_language_id() << std::endl;
 
 	// id string list:
-	std::pair<int, String_UTF8> p;
+	std::pair<String_UTF8, String_UTF8> p;
 	for (auto it : ls.get_all())
 	{
 		p.first = it.first;
@@ -260,14 +280,14 @@ std::ostream& operator<<(std::ostream& os, cdx::Localized_String_Map& ls)
 	return os;
 }
 
-std::istream& operator>>(std::istream& is, std::pair<int, String_UTF8>& p)
+std::istream& operator>>(std::istream& is, std::pair<String_UTF8, String_UTF8>& p)
 {
-	std::pair<int, String_UTF8> tmp;
-
+	std::pair<String_UTF8, String_UTF8> tmp;
+	
 	char c = EOF;
 	is >> tmp.first;
 	is >> c;
-	if (c != ',')
+	if (c != ':')
 	{
 		is.setf(std::ios_base::failbit);
 		return is;
@@ -282,18 +302,18 @@ std::istream& operator>>(std::istream& is, std::pair<int, String_UTF8>& p)
 	{
 		tmp.second += c;
 	}
-
+	
 	if (is.good())
 	{
 		p = tmp;
 	}
-
+	
 	return is;
 }
 
-std::ostream& operator<<(std::ostream& os, std::pair<int,String_UTF8>& p)
+std::ostream& operator<<(std::ostream& os, std::pair<String_UTF8, String_UTF8>& p)
 {
-	os << p.first << ", \"" << p.second << "\"";
-
+	os << p.first << " : \"" << p.second << "\"";
+	
 	return os;
 }
