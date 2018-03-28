@@ -123,7 +123,6 @@
 		B4ED6E1D1A793DED000460C2 /* configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = configuration.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B4ED6E201A793E83000460C2 /* string_utf8.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = string_utf8.cpp; path = engine/util/string_utf8.cpp; sourceTree = SOURCE_ROOT; };
 		B4ED6E211A793E83000460C2 /* string_utf8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = string_utf8.h; path = engine/util/string_utf8.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		B4F7F79919DEE81800302B5C /* info.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = info.txt; sourceTree = "<group>"; };
 		B4F7F7A919DEE81800302B5C /* rect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = rect.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B4F7F7C019DEE90800302B5C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -153,7 +152,6 @@
 		A46AA06219DEE68D00200EBC = {
 			isa = PBXGroup;
 			children = (
-				B4F7F79919DEE81800302B5C /* info.txt */,
 				B479101D1A2E294B00B8A1F5 /* Engine */,
 				B4F7F7C319DEE93700302B5C /* Frameworks */,
 				B4F7F7C419DEE94600302B5C /* Final Products */,
