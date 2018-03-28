@@ -147,10 +147,19 @@ int main(int argc, const char * argv[])
 		<< "ms." << std::endl;
 
 		Localized_String_Map lsm;
-		lsm.copy_from_file(std::string("test_res/lang/TE_fb.lang.txt"));
+		lsm.copy_from_file(std::string("test_res/lang/TE_long.lang.txt"));
 		Localizer& lo = Localizer::get();
 		lo.add_language(lsm);
-		lo.set_default_language(std::string("TE_fb"));
+		lo.set_default_language(std::string("TE_long"));
+		
+		
+		// meassurements:
+		// # entries | time in micro sec per get_str() call
+		//         2 |            0.23
+		//       100 |            0.39
+		//      1000 |            0.50
+		//     10000 |            0.64
+		// --> logarithmic behaviour due to map!
 
 		start = std::chrono::high_resolution_clock::now();
 		for (long l=0; l < reps; ++l)
